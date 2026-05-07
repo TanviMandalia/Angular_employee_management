@@ -1,0 +1,950 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "user_name": "Rahul Sharma",
+      "email": "rahulsharma@gmail.com",
+      "role": {
+        "id": 1,
+        "name": "Developer"
+      },
+      "reportee": [
+        {
+          "id": 101,
+          "name": "Amit"
+        },
+        {
+          "id": 102,
+          "name": "Neha"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "user_name": "Priya Patel",
+      "email": "priya@gmail.com",
+      "role": {
+        "id": 2,
+        "name": "Tester"
+      },
+      "reportee": [
+        {
+          "id": 103,
+          "name": "Karan"
+        }
+      ]
+    },
+    {
+      "user_name": "Tanvi Mandaliya",
+      "email": "tanvi@gmail.com",
+      "role": {
+        "id": 2,
+        "name": "Tester"
+      },
+      "reportee": [
+        {
+          "id": 101,
+          "name": "Amit"
+        },
+        {
+          "id": 102,
+          "name": "Neha"
+        }
+      ],
+      "id": "3dSzmisC1e8"
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "name": "Developer"
+    },
+    {
+      "id": "2",
+      "name": "Tester"
+    },
+    {
+      "id": "3",
+      "name": "Manager"
+    }
+  ],
+  "requests": [
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "4tajWkvnsf8"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "W4J2wcuWBaM"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahul1@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "SToDes4Xzd8"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahul1@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "uNBvLyrJcY0"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "_uqEF6d5oDY"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "-DvJZ_-LDmY"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahulsharma@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "yq3t0dWEMMA"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahulsharma@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "5YipbnCU_Qo"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahulsharma@gmail.com",
+        "role": {
+          "id": 3,
+          "name": "Manager"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "57ZCeksDuBw"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahulsharma@gmail.com",
+        "role": {
+          "id": 3,
+          "name": "Manager"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "2oAJDLTHLAA"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahulsharma@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "CnttEXOU7-w"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahul@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahulsharma@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "5rnSWMZhBTw"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "2",
+      "oldData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priya@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "newData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "R_C3wmQR3qg"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "2",
+      "oldData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priya@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "newData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "-6MCjY2jsFo"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahul1@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahulDave@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "d_wJRmg8wwI"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahul1@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahulDave@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "0nlor0YRprY"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahul1@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahulsharma@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "u42C-WaRlM0"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "1",
+      "oldData": {
+        "id": "1",
+        "user_name": "Rahul Dave",
+        "email": "rahul1@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "newData": {
+        "id": "1",
+        "user_name": "Rahul Sharma",
+        "email": "rahulsharma@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "voHiZwLpPxQ"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "2",
+      "oldData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priya@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "newData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "QGxTy8TGrow"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "3dSzmisC1e8",
+      "oldData": {
+        "user_name": "Tanvi Mandaliya",
+        "email": "tanvi@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "3dSzmisC1e8"
+      },
+      "newData": {
+        "user_name": "Tanvi Mandaliya",
+        "email": "tanvi@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "3dSzmisC1e8"
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "EdIGbFvpBcE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
