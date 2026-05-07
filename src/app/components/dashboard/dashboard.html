@@ -6,10 +6,7 @@
 
     <br>
 
-    <button
-        type="button"
-        (click)="openAddModal()"
-    >
+    <button type="button" (click)="openAddModal()">
         Add User
     </button>
 
@@ -43,10 +40,7 @@
 
                 <td>
 
-                    <button
-                        type="button"
-                        (click)="editUser(user)"
-                    >
+                    <button type="button" (click)="editUser(user)">
                         ✏
                     </button>
 
@@ -54,10 +48,7 @@
                         🗑
                     </button>
 
-                    <button
-                        type="button"
-                        (click)="toggleDropdown(user.id)"
-                    >
+                    <button type="button" (click)="toggleDropdown(user.id)">
                         ▼
                     </button>
 
@@ -101,12 +92,10 @@
 
                 <td colspan="5">
 
-                    <div
-                        style="
+                    <div style="
                         background:#f5f5f5;
                         padding:15px;
-                    "
-                    >
+                    ">
 
                         <h4>
                             Pending Requests
@@ -124,13 +113,11 @@
                         request.status == 'PENDING'
                         ) {
 
-                        <div
-                            style="
+                        <div style="
                             border:1px solid gray;
                             padding:10px;
                             margin-bottom:10px;
-                        "
-                        >
+                        ">
 
                             <p>
 
@@ -172,19 +159,11 @@
 
                             </p>
 
-                            <button
-                                type="button"
-                                [disabled]="request.actionTaken"
-                                (click)="acceptRequest(request)"
-                            >
+                            <button type="button" [disabled]="request.actionTaken" (click)="acceptRequest(request)">
                                 Accept
                             </button>
 
-                            <button
-                                type="button"
-                                [disabled]="request.actionTaken"
-                                (click)="rejectRequest(request)"
-                            >
+                            <button type="button" [disabled]="request.actionTaken" (click)="rejectRequest(request)">
                                 Reject
                             </button>
 
@@ -222,28 +201,15 @@
 
         <br>
 
-        <input
-            type="text"
-            [(ngModel)]="selectedUser.user_name"
-            placeholder="User Name"
-            name="user_name"
-        >
+        <input type="text" [(ngModel)]="selectedUser.user_name" placeholder="User Name" name="user_name">
 
         <br><br>
 
-        <input
-            type="email"
-            [(ngModel)]="selectedUser.email"
-            placeholder="Email"
-            name="email"
-        >
+        <input type="email" [(ngModel)]="selectedUser.email" placeholder="Email" name="email">
 
         <br><br>
 
-        <select
-            [(ngModel)]="selectedUser.role"
-            name="role"
-        >
+        <select [(ngModel)]="selectedUser.role" name="role">
 
             @for (role of roles; track role.id) {
 
@@ -259,18 +225,11 @@
 
         <br><br>
 
-        <button
-            type="button"
-            [disabled]="isSaving"
-            (click)="saveEditRequest()"
-        >
+        <button type="button" [disabled]="isSaving" (click)="saveEditRequest()">
             Save
         </button>
 
-        <button
-            type="button"
-            (click)="closeModal()"
-        >
+        <button type="button" (click)="closeModal()">
             Cancel
         </button>
 
@@ -292,25 +251,15 @@
 
         <br>
 
-        <input
-            type="text"
-            [(ngModel)]="newUser.user_name"
-            placeholder="User Name"
-        >
+        <input type="text" [(ngModel)]="newUser.user_name" placeholder="User Name">
 
         <br><br>
 
-        <input
-            type="email"
-            [(ngModel)]="newUser.email"
-            placeholder="Email"
-        >
+        <input type="email" [(ngModel)]="newUser.email" placeholder="Email">
 
         <br><br>
 
-        <select
-            [(ngModel)]="newUser.role"
-        >
+        <select [(ngModel)]="newUser.role">
 
             @for (role of roles; track role.id) {
 
@@ -326,17 +275,11 @@
 
         <br><br>
 
-        <button
-            type="button"
-            (click)="saveUser()"
-        >
+        <button type="button" (click)="saveUser()">
             Save User
         </button>
 
-        <button
-            type="button"
-            (click)="closeAddModal()"
-        >
+        <button type="button" (click)="closeAddModal()">
             Cancel
         </button>
 
