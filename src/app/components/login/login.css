@@ -1,3 +1,51 @@
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    font-family: Arial, sans-serif;
+}
+
 .card {
-  border-radius: 10px;
+    border: none;
+    border-radius: 16px;
+    background: #ffffff;
+}
+
+h3 {
+    font-weight: 600;
+    color: #333;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #6c63ff;
+    box-shadow: 0 0 0 0.15rem rgba(108, 99, 255, 0.25);
+}
+
+.btn-primary {
+    background: #6c63ff;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #574fd6;
+}
+
+.text-danger {
+    font-size: 13px;
+    margin-bottom: 10px;
 }

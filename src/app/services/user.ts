@@ -12,13 +12,11 @@ export class User {
   ) { }
 
   getUsers() {
-
     return this.http.get(this.apiUrl);
 
   }
 
   updateUser(id: any, data: any) {
-
     return this.http.put(
       `${this.apiUrl}/${id}`,
       data

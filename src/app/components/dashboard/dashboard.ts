@@ -1,47 +1,24 @@
-import {
-  Component,
-  OnInit,
-  ChangeDetectorRef
-} from '@angular/core';
-
+import {Component,OnInit,ChangeDetectorRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { FormsModule } from '@angular/forms';
-
 import { User } from '../../services/user';
-
 import { Request } from '../../services/request';
 
 @Component({
   selector: 'app-dashboard',
-
-  standalone: true,
-
-  imports: [
-    CommonModule,
-    FormsModule
-  ],
-
+  imports: [ CommonModule, FormsModule],
   templateUrl: './dashboard.html',
-
   styleUrls: ['./dashboard.css']
 })
 export class Dashboard implements OnInit {
 
   users: any[] = [];
-
   requests: any[] = [];
-
   openedDropdownId: number | null = null;
-
   showEditModal = false;
-
   showAddModal = false;
-
   selectedUser: any = {};
-
   isSaving = false;
-
   roles = [
 
     {
