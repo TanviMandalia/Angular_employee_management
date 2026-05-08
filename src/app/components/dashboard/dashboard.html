@@ -1,290 +1,117 @@
 <div class="container mt-4">
-
-    <h2>
-        Employee Dashboard
-    </h2>
-
-    <br>
-
-    <button type="button" (click)="openAddModal()">
-        Add User
-    </button>
-
-    <br><br>
-
+    <h2> Employee Dashboard </h2><br>
+    <div class="btnalign">
+        <button type="button" (click)="openAddModal()" class="addUser"> 📥 Add User</button><br><br>
+        <button type="button" class="logout" (click)="onLogout()"> ⏻ Log-Out</button>
+    </div>
     <table border="1" width="100%" cellpadding="10">
-
         <thead>
-
             <tr>
-
                 <th>Actions</th>
-
                 <th>User Name</th>
-
                 <th>Email</th>
-
                 <th>Role</th>
-
                 <th>Reportees</th>
-
             </tr>
-
         </thead>
-
         <tbody>
-
-            @for (user of users; track user.id) {
-
+            @for (user of users; track $index) {
             <tr>
-
                 <td>
-
-                    <button type="button" (click)="editUser(user)">
-                        ✏
-                    </button>
-
-                    <button type="button">
-                        🗑
-                    </button>
-
-                    <button type="button" (click)="toggleDropdown(user.id)">
-                        ▼
-                    </button>
-
+                    <button type="button" class="edit" (click)="editUser(user)"> 📝 </button>
+                    <button type="button" class="delete" (click)="deleteUser(user.id)"> 👉🗑️ </button>
+                    <button type="button" class="menu" (click)="toggleDropdown(user.id)">🔻</button>
                 </td>
-
+                <td> {{ user.user_name }} </td>
+                <td> {{ user.email }} </td>
+                <td> {{ user.role?.name }} </td>
                 <td>
-                    {{ user.user_name }}
-                </td>
-
-                <td>
-                    {{ user.email }}
-                </td>
-
-                <td>
-                    {{ user.role.name }}
-                </td>
-
-                <td>
-
-                    @for (
-                    member of user.reportee;
-                    track member.id;
-                    let last = $last
-                    ) {
-
-                    {{ member.name }}
-
-                    @if (!last) {
-                    ,
+                    @for (member of user.reportee; track $index; let last = $last) {
+                    {{ member.name }}@if (!last) { , }
                     }
-
-                    }
-
+                    <!-- <span> {{user.reportee.map(r => r.name).join(', ')}} </span> -->
+                    <pre>{{user.reportee | json}}</pre>
                 </td>
-
             </tr>
 
             @if (openedDropdownId === user.id) {
-
             <tr>
-
                 <td colspan="5">
-
-                    <div style="
-                        background:#f5f5f5;
-                        padding:15px;
-                    ">
-
-                        <h4>
-                            Pending Requests
-                        </h4>
-
-                        <br>
-
-                        @for (
-                        request of requests;
-                        track request.id
-                        ) {
-
-                        @if (
-                        request.userId == user.id &&
-                        request.status == 'PENDING'
-                        ) {
-
-                        <div style="
-                            border:1px solid gray;
-                            padding:10px;
-                            margin-bottom:10px;
-                        ">
-
-                            <p>
-
-                                <b>
-                                    Old Email:
-                                </b>
-
-                                {{ request.oldData.email }}
-
-                            </p>
-
-                            <p>
-
-                                <b>
-                                    New Email:
-                                </b>
-
-                                {{ request.newData.email }}
-
-                            </p>
-
-                            <p>
-
-                                <b>
-                                    Old Role:
-                                </b>
-
-                                {{ request.oldData.role.name }}
-
-                            </p>
-
-                            <p>
-
-                                <b>
-                                    New Role:
-                                </b>
-
-                                {{ request.newData.role.name }}
-
-                            </p>
-
+                    <div>
+                        <h4> Pending Requests </h4><br>
+                        @for (request of requests; track $index) {
+                        @if (request.userId == user.id && request.status == 'PENDING') {
+                        <div style="border:1px solid gray; padding:10px; margin-bottom:10px;">
+                            <p> <b> Old Email: </b> {{ request.oldData?.email }} </p>
+                            <p> <b> New Email: </b> {{ request.newData?.email }} </p>
+                            <p> <b> Old Role: </b> {{ request.oldData?.role?.name }} </p>
+                            <p> <b> New Role: </b> {{ request.newData?.role?.name }} </p>
+                            <p><b>Old Reportee:</b> {{request.newData?.reportee?.name}}</p>
+                            <p><b>New Reportee:</b> {{request.newData?.reportee?.name}} </p>
                             <button type="button" [disabled]="request.actionTaken" (click)="acceptRequest(request)">
-                                Accept
-                            </button>
-
+                                Accept </button>
                             <button type="button" [disabled]="request.actionTaken" (click)="rejectRequest(request)">
-                                Reject
-                            </button>
-
+                                Reject </button>
                         </div>
-
                         }
-
                         }
-
                     </div>
-
                 </td>
-
             </tr>
-
             }
-
             }
-
         </tbody>
-
     </table>
-
 </div>
 
 @if (showEditModal) {
-
 <div class="modal-bg">
-
     <div class="modal-box">
-
-        <h3>
-            Edit User
-        </h3>
-
-        <br>
-
-        <input type="text" [(ngModel)]="selectedUser.user_name" placeholder="User Name" name="user_name">
-
+        <h3> Edit User </h3><br>
+        <label> Usename:</label>
+        <input type="text" [(ngModel)]="selectedUser.user_name" name="user_name">
         <br><br>
-
-        <input type="email" [(ngModel)]="selectedUser.email" placeholder="Email" name="email">
-
+        <label> Email:</label>
+        <input type="email" [(ngModel)]="selectedUser.email" name="email">
         <br><br>
-
+        <label> Role:</label>
         <select [(ngModel)]="selectedUser.role" name="role">
-
             @for (role of roles; track role.id) {
-
-            <option [ngValue]="role">
-
-                {{ role.name }}
-
-            </option>
-
+            <option [ngValue]="role"> {{ role.name }} </option>
             }
-
         </select>
-
         <br><br>
-
-        <button type="button" [disabled]="isSaving" (click)="saveEditRequest()">
-            Save
-        </button>
-
-        <button type="button" (click)="closeModal()">
-            Cancel
-        </button>
-
+        <label>Reportee:</label>
+        <input type="text" name="reportee" [(ngModel)]="selectedUser.reportee">
+        <br><br>
+        <button type="button" [disabled]="isSaving" (click)="saveEditRequest()"> 💾 Save </button>
+        <button type="button" (click)="closeModal()"> ❌ Cancel </button>
     </div>
-
 </div>
-
 }
 
 @if (showAddModal) {
-
 <div class="modal-bg">
-
     <div class="modal-box">
-
-        <h3>
-            Add User
-        </h3>
-
-        <br>
-
-        <input type="text" [(ngModel)]="newUser.user_name" placeholder="User Name">
-
+        <h3> 📥 Add User </h3><br>
+        <label> Usename:</label>
+        <input type="text" [(ngModel)]="newUser.user_name">
         <br><br>
-
-        <input type="email" [(ngModel)]="newUser.email" placeholder="Email">
-
+        <label> Email:</label>
+        <input type="email" [(ngModel)]="newUser.email">
         <br><br>
-
+        <label> Role:</label>
         <select [(ngModel)]="newUser.role">
-
             @for (role of roles; track role.id) {
-
-            <option [ngValue]="role">
-
-                {{ role.name }}
-
-            </option>
-
+            <option [ngValue]="role"> {{ role.name }} </option>
             }
-
         </select>
-
         <br><br>
-
-        <button type="button" (click)="saveUser()">
-            Save User
-        </button>
-
-        <button type="button" (click)="closeAddModal()">
-            Cancel
-        </button>
-
+        <label> Reportee:</label>
+        <input type="text" [(ngModel)]="newUser.reportee">
+        <br><br>
+        <button type="button" (click)="saveUser()"> 💾 Save User </button>
+        <button type="button" (click)="closeAddModal()"> ❌ Cancel </button>
     </div>
-
 </div>
-
 }

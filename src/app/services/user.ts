@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class User {
-   apiUrl = 'http://localhost:3000/users';
+  apiUrl = 'http://localhost:3000/users';
 
   constructor(
     private http: HttpClient
@@ -25,11 +25,14 @@ export class User {
   }
 
   addUser(data: any) {
-
     return this.http.post(
       this.apiUrl,
       data
     );
-
   }
+
+  deleteUser(id: string | number) {
+  return this.http.delete(`${this.apiUrl}/${id}`); 
+}
+
 }

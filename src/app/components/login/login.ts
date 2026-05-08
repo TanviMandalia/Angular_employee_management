@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Auth } from '../../services/auth';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,6 @@ export class Login {
   errorMessage: string = '';
 
   constructor(
-    private authService: Auth,
     private router: Router
   ) { }
 
@@ -27,9 +26,7 @@ export class Login {
       return;
     }
 
-    const isValidUser = this.authService.login(this.username, this.password);
-
-    if (isValidUser) {
+    if (this.username === 'user' && this.password === 'user123') {
       this.router.navigate(['/dashboard']);
     } else {
       this.errorMessage = 'Invalid Username or Password';

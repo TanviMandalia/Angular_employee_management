@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
    {
-    path: '',
+    path: 'login',
     component: Login
   },
 

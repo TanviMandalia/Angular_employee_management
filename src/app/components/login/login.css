@@ -1,19 +1,30 @@
 body {
-    background: linear-gradient(135deg, #667eea, #764ba2);
     font-family: Arial, sans-serif;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 97vh;
+}
+
 .card {
-    border: none;
+    display: grid;
+    justify-content: center;
+    height: 330px;
+    width: 230px;
     border-radius: 16px;
     background: #ffffff;
+    border: 1px solid darkblue;
+    padding: 10px;
 }
 
-h3 {
-    font-weight: 600;
-    color: #333;
+h2{
+    font-size: 40px;
+    color: #3730b8;
 }
-
 label {
     font-size: 14px;
     font-weight: 500;
@@ -24,7 +35,6 @@ label {
     border-radius: 10px;
     padding: 10px 12px;
     border: 1px solid #ddd;
-    transition: all 0.2s ease;
 }
 
 .form-control:focus {
@@ -38,7 +48,6 @@ label {
     border-radius: 10px;
     padding: 10px;
     font-weight: 500;
-    transition: 0.3s ease;
 }
 
 .btn-primary:hover {

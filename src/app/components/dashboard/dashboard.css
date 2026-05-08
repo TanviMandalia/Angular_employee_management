@@ -15,8 +15,9 @@ body {
 }
 
 h2 {
+    text-align: center;
     font-size: 28px;
-    color: #1e293b;
+    color: darkblue;
     margin-bottom: 20px;
 }
 
@@ -52,13 +53,49 @@ tbody tr:hover {
 }
 
 button {
-    border: none;
-    outline: none;
+    border: 1px solid grey;
     cursor: pointer;
-    padding: 8px 14px;
+    padding: 4px;
     border-radius: 6px;
     transition: 0.3s;
     font-size: 14px;
+    background-color: #a0acbb;
+    height: 35px;
+}
+
+.addUser {
+    padding: 8px;
+    background-color: rgb(195, 231, 243);
+    border: 1px solid blue;
+    font-weight: bold;
+    color: maroon;
+    font-family: monospace;
+}
+
+.edit {
+    background-color: #6ce699;
+}
+
+.delete {
+    background-color: #f44949;
+}
+
+.menu {
+    background-color: #a0acbb;
+}
+
+.logout {
+    padding: 8px;
+    background-color: rgb(227, 62, 62);
+    border: 1px solid blue;
+    font-weight: bold;
+    color: white;
+    font-family: monospace;
+}
+.btnalign{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 
 button:hover {
@@ -127,6 +164,7 @@ button[type="button"] {
 }
 
 .modal-box {
+    text-align: center;
     width: 400px;
     background-color: white;
     padding: 30px;
@@ -135,7 +173,8 @@ button[type="button"] {
 }
 
 .modal-box h3 {
-    color: #1e293b;
+    color: #23406e;
+    font-size: 30px;
     margin-bottom: 20px;
 }
 
