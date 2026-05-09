@@ -5,8 +5,8 @@
       "user_name": "Priya Patel",
       "email": "priyapatel@gmail.com",
       "role": {
-        "id": 2,
-        "name": "Tester"
+        "id": 4,
+        "name": "Automation"
       },
       "reportee": [
         {
@@ -19,8 +19,8 @@
       "user_name": "Tanvi Mandaliya",
       "email": "tanvi@gmail.com",
       "role": {
-        "id": 1,
-        "name": "Developer"
+        "id": 3,
+        "name": "Manager"
       },
       "reportee": [
         {
@@ -35,42 +35,17 @@
       "id": "3dSzmisC1e8"
     },
     {
-      "user_name": "dhruvi sapovadiya",
-      "email": "dhruvi@gmail.com",
+      "user_name": "Dhruvi Sapovadiya",
+      "email": "dhruvi123@gmail.com",
       "role": {
-        "id": 1,
-        "name": "Developer"
+        "id": 5,
+        "name": "HR"
       },
       "reportee": [
-        {
-          "id": 101,
-          "name": "Amit"
-        },
-        {
-          "id": 102,
-          "name": "Neha"
-        }
+        "Rohit",
+        "Bhumi"
       ],
       "id": "EbbMCIsRWTM"
-    },
-    {
-      "user_name": "yash mishra",
-      "email": "yash@gmail.com",
-      "role": {
-        "id": 4,
-        "name": "Security Analyst"
-      },
-      "reportee": [
-        {
-          "id": 101,
-          "name": "Amit"
-        },
-        {
-          "id": 102,
-          "name": "Neha"
-        }
-      ],
-      "id": "dugqHPNDqG8"
     },
     {
       "user_name": "Bhavika Chhatbar",
@@ -109,6 +84,88 @@
         }
       ],
       "id": "ge87cuPVUAo"
+    },
+    {
+      "user_name": "Dhruvi Mehta",
+      "email": "Dhruvi@gmail.com",
+      "role": {
+        "id": 2,
+        "name": "Tester"
+      },
+      "reportee": [
+        {
+          "id": 101,
+          "name": "Amit"
+        },
+        {
+          "id": 102,
+          "name": "Neha"
+        }
+      ],
+      "id": "631q-fW27cU"
+    },
+    {
+      "user_name": "Isha Ranpura",
+      "email": "isha@gmail.com",
+      "role": {
+        "id": 5,
+        "name": "HR"
+      },
+      "reportee": [
+        {
+          "name": "Rohit"
+        },
+        {
+          "name": "Ruchi"
+        },
+        {
+          "name": "Itisha"
+        }
+      ],
+      "id": "6UjvEPp2bSs"
+    },
+    {
+      "user_name": "Sweta Jani",
+      "email": "sweta@gmail.com",
+      "role": {
+        "id": 4,
+        "name": "Automation"
+      },
+      "reportee": [
+        {
+          "name": "Darshit"
+        },
+        {
+          "name": "Sneha"
+        },
+        {
+          "name": "Rushit"
+        }
+      ],
+      "id": "bCA9W7lgj4Q"
+    },
+    {
+      "user_name": "Jatin Vora",
+      "email": "jatin@gmail.com",
+      "role": {
+        "id": 3,
+        "name": "Manager"
+      },
+      "reportee": [
+        {
+          "name": "Vrajesh"
+        },
+        {
+          "name": "Sumit"
+        },
+        {
+          "name": "Dhvani"
+        },
+        {
+          "name": "Tanvi"
+        }
+      ],
+      "id": "NiBUQl0iqiQ"
     }
   ],
   "roles": [
@@ -1004,7 +1061,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "dugqHPNDqG8",
+      "userId": null,
       "oldData": {
         "user_name": "",
         "email": "",
@@ -1232,8 +1289,8 @@
         ],
         "id": "3dSzmisC1e8"
       },
-      "status": "PENDING",
-      "actionTaken": false,
+      "status": "ACCEPTED",
+      "actionTaken": true,
       "id": "bVYpDtnRUDw"
     },
     {
@@ -1277,13 +1334,13 @@
         ],
         "id": "EbbMCIsRWTM"
       },
-      "status": "PENDING",
-      "actionTaken": false,
+      "status": "ACCEPTED",
+      "actionTaken": true,
       "id": "cR4Zg1x0CBk"
     },
     {
       "requestType": "EDIT",
-      "userId": "dugqHPNDqG8",
+      "userId": null,
       "oldData": {
         "user_name": "yash mishra",
         "email": "yash@gmail.com",
@@ -1322,8 +1379,8 @@
         ],
         "id": "dugqHPNDqG8"
       },
-      "status": "PENDING",
-      "actionTaken": false,
+      "status": "ACCEPTED",
+      "actionTaken": true,
       "id": "q8gI513UdFc"
     },
     {
@@ -1531,9 +1588,708 @@
           }
         ]
       },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "YmZ8_v1yEIs"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": null,
+      "oldData": {
+        "user_name": "yash mishra",
+        "email": "yash@gmail.com",
+        "role": {
+          "id": 3,
+          "name": "Manager"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "dugqHPNDqG8"
+      },
+      "newData": {
+        "user_name": "Yash Mishra",
+        "email": "yash@gmail.com",
+        "role": {
+          "id": 3,
+          "name": "Manager"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "dugqHPNDqG8"
+      },
       "status": "PENDING",
       "actionTaken": false,
-      "id": "YmZ8_v1yEIs"
+      "id": "zcVaMqXFIBs"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": null,
+      "oldData": {
+        "user_name": "Isha Ranpura",
+        "email": "isha@gmail.com",
+        "role": {
+          "id": 5,
+          "name": "HR"
+        },
+        "reportee": [
+          {
+            "id": "2",
+            "user_name": "Priya Patel",
+            "email": "priyapatel@gmail.com",
+            "role": {
+              "id": 2,
+              "name": "Tester"
+            },
+            "reportee": [
+              {
+                "id": 103,
+                "name": "Karan"
+              }
+            ]
+          },
+          {
+            "user_name": "Tanvi Mandaliya",
+            "email": "tanvi@gmail.com",
+            "role": {
+              "id": 1,
+              "name": "Developer"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "3dSzmisC1e8"
+          },
+          {
+            "user_name": "dhruvi sapovadiya",
+            "email": "dhruvi@gmail.com",
+            "role": {
+              "id": 1,
+              "name": "Developer"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "EbbMCIsRWTM"
+          },
+          {
+            "user_name": "yash mishra",
+            "email": "yash@gmail.com",
+            "role": {
+              "id": 3,
+              "name": "Manager"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "dugqHPNDqG8"
+          },
+          {
+            "user_name": "Bhavika Chhatbar",
+            "email": "bhavika@gmail.com",
+            "role": {
+              "id": 1,
+              "name": "Developer"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "Qtg6i65gsgM"
+          },
+          {
+            "user_name": "Krishna Pandit",
+            "email": "karishna@gmail.com",
+            "role": {
+              "id": 3,
+              "name": "Manager"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "ge87cuPVUAo"
+          },
+          {
+            "user_name": "Dhruvi Mehta",
+            "email": "Dhruvi@gmail.com",
+            "role": {
+              "id": 2,
+              "name": "Tester"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "631q-fW27cU"
+          }
+        ],
+        "id": "TfV2KBaCt8g"
+      },
+      "newData": {
+        "user_name": "Isha Ranpura",
+        "email": "isha@gmail.com",
+        "role": {
+          "id": 5,
+          "name": "HR"
+        },
+        "reportee": [
+          {
+            "id": "2",
+            "user_name": "Priya Patel",
+            "email": "priyapatel@gmail.com",
+            "role": {
+              "id": 2,
+              "name": "Tester"
+            },
+            "reportee": [
+              {
+                "id": 103,
+                "name": "Karan"
+              }
+            ]
+          },
+          {
+            "user_name": "Tanvi Mandaliya",
+            "email": "tanvi@gmail.com",
+            "role": {
+              "id": 1,
+              "name": "Developer"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "3dSzmisC1e8"
+          },
+          {
+            "user_name": "dhruvi sapovadiya",
+            "email": "dhruvi@gmail.com",
+            "role": {
+              "id": 1,
+              "name": "Developer"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "EbbMCIsRWTM"
+          },
+          {
+            "user_name": "yash mishra",
+            "email": "yash@gmail.com",
+            "role": {
+              "id": 3,
+              "name": "Manager"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "dugqHPNDqG8"
+          },
+          {
+            "user_name": "Bhavika Chhatbar",
+            "email": "bhavika@gmail.com",
+            "role": {
+              "id": 1,
+              "name": "Developer"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "Qtg6i65gsgM"
+          },
+          {
+            "user_name": "Krishna Pandit",
+            "email": "karishna@gmail.com",
+            "role": {
+              "id": 3,
+              "name": "Manager"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "ge87cuPVUAo"
+          },
+          {
+            "user_name": "Dhruvi Mehta",
+            "email": "Dhruvi@gmail.com",
+            "role": {
+              "id": 2,
+              "name": "Tester"
+            },
+            "reportee": [
+              {
+                "id": 101,
+                "name": "Amit"
+              },
+              {
+                "id": 102,
+                "name": "Neha"
+              }
+            ],
+            "id": "631q-fW27cU"
+          }
+        ],
+        "id": "TfV2KBaCt8g"
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "1uf4Br0C28g"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "6UjvEPp2bSs",
+      "oldData": {
+        "user_name": "Isha Ranpura",
+        "email": "isha@gmail.com",
+        "role": "HR",
+        "reportee": [
+          {
+            "name": "Rohit"
+          },
+          {
+            "name": "Ruchi"
+          },
+          {
+            "name": "Itisha"
+          }
+        ],
+        "id": "6UjvEPp2bSs"
+      },
+      "newData": {
+        "user_name": "Isha Ranpura",
+        "email": "isha@gmail.com",
+        "role": {
+          "id": 5,
+          "name": "HR"
+        },
+        "reportee": [
+          {
+            "name": "Rohit"
+          },
+          {
+            "name": "Ruchi"
+          },
+          {
+            "name": "Itisha"
+          }
+        ],
+        "id": "6UjvEPp2bSs"
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "wFcFB9lbLyI"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "2",
+      "oldData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "newData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "jvaKpaq-NKA"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "2",
+      "oldData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 2,
+          "name": "Tester"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "newData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 4,
+          "name": "Automation"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "Ly_gAlsU9Bg"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "EbbMCIsRWTM",
+      "oldData": {
+        "user_name": "dhruvi sapovadiya",
+        "email": "dhruvi@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "newData": {
+        "user_name": "Dhruvi Sapovadiya",
+        "email": "dhruvi123@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "hpTPs_XisFM"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "EbbMCIsRWTM",
+      "oldData": {
+        "user_name": "Dhruvi Sapovadiya",
+        "email": "dhruvi123@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "newData": {
+        "user_name": "Dhruvi Sapovadiya",
+        "email": "dhruvi123@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "xsrwP6JnGR8"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "EbbMCIsRWTM",
+      "oldData": {
+        "user_name": "Dhruvi Sapovadiya",
+        "email": "dhruvi123@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "newData": {
+        "user_name": "Dhruvi Sapovadiya",
+        "email": "dhruvi123@gmail.com",
+        "role": {
+          "id": 5,
+          "name": "HR"
+        },
+        "reportee": [
+          "Rohit",
+          "Bhumi"
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "0Us_aITuiJE"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "3dSzmisC1e8",
+      "oldData": {
+        "user_name": "Tanvi Mandaliya",
+        "email": "tanvi@gmail.com",
+        "role": {
+          "id": 3,
+          "name": "Manager"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "3dSzmisC1e8"
+      },
+      "newData": {
+        "user_name": "Tanvi Mandaliya",
+        "email": "tanvi1215@gmail.com",
+        "role": {
+          "id": 3,
+          "name": "Manager"
+        },
+        "reportee": [
+          "Krishna",
+          "Yash",
+          "Isha"
+        ],
+        "id": "3dSzmisC1e8"
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "qDJXtfKylxs"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "NiBUQl0iqiQ",
+      "oldData": {
+        "user_name": "Jatin Vora",
+        "email": "jatin@gmail.com",
+        "role": {
+          "id": 3,
+          "name": "Manager"
+        },
+        "reportee": [
+          {
+            "name": "Vrajesh"
+          },
+          {
+            "name": "Sumit"
+          },
+          {
+            "name": "Dhvani"
+          },
+          {
+            "name": "Tanvi"
+          }
+        ],
+        "id": "NiBUQl0iqiQ"
+      },
+      "newData": {
+        "user_name": "Jatin Vora",
+        "email": "jatin@gmail.com",
+        "role": {
+          "id": 4,
+          "name": "Automation"
+        },
+        "reportee": [
+          "Vrajesh",
+          "Sumit",
+          "Dhvani",
+          "Tanvi",
+          "Rushi"
+        ],
+        "id": "NiBUQl0iqiQ"
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "F0CDksv16b0"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "2",
+      "oldData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 4,
+          "name": "Automation"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "newData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 5,
+          "name": "HR"
+        },
+        "reportee": [
+          "Karan"
+        ]
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "nm8QEz0Ns7Q"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

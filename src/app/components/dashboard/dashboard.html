@@ -4,7 +4,7 @@
         <button type="button" (click)="openAddModal()" class="addUser"> 📥 Add User</button><br><br>
         <button type="button" class="logout" (click)="onLogout()"> ⏻ Log-Out</button>
     </div>
-    <table border="1" width="100%" cellpadding="10">
+    <table width="100%" cellpadding="10">
         <thead>
             <tr>
                 <th>Actions</th>
@@ -26,12 +26,10 @@
                 <td> {{ user.email }} </td>
                 <td> {{ user.role?.name }} </td>
                 <td>
-                    @for (member of user.reportee; track $index; let last = $last) {
-                    {{ member.name }}@if (!last) { , }
-                    }
-                    <!-- <span> {{user.reportee.map(r => r.name).join(', ')}} </span> -->
-                    <pre>{{user.reportee | json}}</pre>
+                    {{ getReporteeNames(user.reportee) }}
+                    <!-- <pre>{{user.reportee | json}}</pre> -->
                 </td>
+
             </tr>
 
             @if (openedDropdownId === user.id) {
@@ -44,10 +42,13 @@
                         <div style="border:1px solid gray; padding:10px; margin-bottom:10px;">
                             <p> <b> Old Email: </b> {{ request.oldData?.email }} </p>
                             <p> <b> New Email: </b> {{ request.newData?.email }} </p>
-                            <p> <b> Old Role: </b> {{ request.oldData?.role?.name }} </p>
-                            <p> <b> New Role: </b> {{ request.newData?.role?.name }} </p>
-                            <p><b>Old Reportee:</b> {{request.newData?.reportee?.name}}</p>
-                            <p><b>New Reportee:</b> {{request.newData?.reportee?.name}} </p>
+                            <hr>
+                            <p> <b> Old Role: </b> {{ request.oldData?.role?.name || request.oldData?.role }} </p>
+                            <p> <b> New Role: </b> {{ request.newData?.role?.name || request.newData?.role }} </p>
+                            <hr>
+                            <p> <b> Old Reportee: </b> {{ getReporteeNames(request.oldData?.reportee) || 'None' }} </p>
+                            <p> <b> New Reportee: </b> {{ getReporteeNames(request.newData?.reportee) || 'None' }} </p>
+
                             <button type="button" [disabled]="request.actionTaken" (click)="acceptRequest(request)">
                                 Accept </button>
                             <button type="button" [disabled]="request.actionTaken" (click)="rejectRequest(request)">
@@ -81,8 +82,8 @@
             }
         </select>
         <br><br>
-        <label>Reportee:</label>
-        <input type="text" name="reportee" [(ngModel)]="selectedUser.reportee">
+        <label> Reportees (comma separated):</label>
+        <input type="text" [(ngModel)]="manualReportees" placeholder="e.g. Amit, Neha, Karan">
         <br><br>
         <button type="button" [disabled]="isSaving" (click)="saveEditRequest()"> 💾 Save </button>
         <button type="button" (click)="closeModal()"> ❌ Cancel </button>
@@ -94,22 +95,27 @@
 <div class="modal-bg">
     <div class="modal-box">
         <h3> 📥 Add User </h3><br>
-        <label> Usename:</label>
+
+        <label> Username:</label>
         <input type="text" [(ngModel)]="newUser.user_name">
         <br><br>
+
         <label> Email:</label>
         <input type="email" [(ngModel)]="newUser.email">
         <br><br>
+
         <label> Role:</label>
         <select [(ngModel)]="newUser.role">
             @for (role of roles; track role.id) {
             <option [ngValue]="role"> {{ role.name }} </option>
             }
         </select>
+
         <br><br>
-        <label> Reportee:</label>
-        <input type="text" [(ngModel)]="newUser.reportee">
+        <label> Reportees (comma separated):</label>
+        <input type="text" [(ngModel)]="manualReportees" placeholder="e.g. Amit, Neha, Karan">
         <br><br>
+
         <button type="button" (click)="saveUser()"> 💾 Save User </button>
         <button type="button" (click)="closeAddModal()"> ❌ Cancel </button>
     </div>

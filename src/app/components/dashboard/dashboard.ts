@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
+  standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css']
@@ -15,11 +16,28 @@ import { Router } from '@angular/router';
 export class Dashboard implements OnInit {
   users: any[] = [];
   requests: any[] = [];
+  expandedRequestIds: any[] = []; // make to allow multiple requests
+
+
+  // getReporteeNames(reporteeNames: string[]) {
+  //   return reporteeNames.join(', ');
+  // }
+
+  getReporteeNames(reportees: any[]): string {
+    if (!reportees || !Array.isArray(reportees)) {
+      return '';
+    }
+    return reportees.map(r => r.name || r).join(', ');
+  }
+
   openedDropdownId: number | null = null;
   showEditModal = false;
   showAddModal = false;
-  selectedUser: any = {};
+  selectedUser: any = { reportee: [] };
   isSaving = false;
+  manualReportees: string = '';
+
+
   roles = [
     { id: 1, name: 'Developer' },
     { id: 2, name: 'Tester' },
@@ -28,11 +46,17 @@ export class Dashboard implements OnInit {
     { id: 5, name: 'HR' },
     { id: 6, name: 'Software Enginner' }
   ];
-  newUser = { user_name: '', email: '', role: '', reportee: [] };
+
+  newUser = {
+    user_name: '',
+    email: '',
+    role: '',
+    reportee: [] as any[]
+  };
 
   constructor(
-    private authService : Auth,
-    private router : Router,
+    private authService: Auth,
+    private router: Router,
     private userService: User,
     private requestService: Request,
     private cd: ChangeDetectorRef
@@ -42,52 +66,71 @@ export class Dashboard implements OnInit {
     this.loadUsers();
     this.loadRequests();
   }
+
   loadUsers() {
-    this.userService
-      .getUsers()
-      .subscribe({
-        next: (response: any) => {
-          this.users = response;
-          this.cd.detectChanges();
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+    this.userService.getUsers().subscribe({
+      next: (response: any) => {
+        this.users = response;
+        this.cd.detectChanges();
+      },
+      error: (error) => console.log(error)
+    });
   }
 
-  onLogout(){
+  onLogout() {
     this.authService.logout();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
   loadRequests() {
-    this.requestService
-      .getAllRequests()
-      .subscribe({
-        next: (response: any) => {
-          this.requests = response;
-          this.cd.detectChanges();
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+    this.requestService.getAllRequests().subscribe({
+      next: (response: any) => {
+        this.requests = response;
+        this.cd.detectChanges();
+      },
+      error: (error) => console.log(error)
+    });
   }
 
   toggleDropdown(id: number) {
-    if (this.openedDropdownId === id) {
-      this.openedDropdownId = null;
-    } else {
-      this.openedDropdownId = id;
-    }
+    this.openedDropdownId = this.openedDropdownId === id ? null : id;
   }
 
-  editUser(user: any) {
-    this.selectedUser =
-      JSON.parse(JSON.stringify(user));
-    this.showEditModal = true;
+toggleRequest(requestId: any) {
+  const index = this.expandedRequestIds.indexOf(requestId);
+  if (index > -1) {
+  
+    this.expandedRequestIds.splice(index, 1);
+  } else {
+
+    this.expandedRequestIds.push(requestId);
   }
+}
+
+isExpanded(requestId: any): boolean {
+  return this.expandedRequestIds.includes(requestId);
+}
+
+
+editUser(user: any) {
+
+  this.selectedUser = JSON.parse(JSON.stringify(user));
+  
+  if (this.selectedUser.reportee) {
+    if (Array.isArray(this.selectedUser.reportee)) {
+      this.manualReportees = this.selectedUser.reportee
+        .map((r: any) => r.name || r)
+        .join(', ');
+    } else {
+      this.manualReportees = this.selectedUser.reportee;
+    }
+  } else {
+    this.manualReportees = '';
+  }
+  
+  this.showEditModal = true;
+}
+
 
   closeModal() {
     this.showEditModal = false;
@@ -97,143 +140,125 @@ export class Dashboard implements OnInit {
     this.showAddModal = true;
   }
 
-  closeAddModal() {
-    this.showAddModal = false;
-  }
-
   saveUser() {
+   
+    const reporteeArray = this.manualReportees
+      .split(',')
+      .map(name => name.trim())
+      .filter(name => name !== '')
+      .map(name => ({ name: name })); 
+
+   
+    const roleName = typeof this.newUser.role === 'object'
+      ? (this.newUser.role as any).name
+      : this.newUser.role;
+
     const newUserObject = {
       user_name: this.newUser.user_name,
       email: this.newUser.email,
       role: this.newUser.role,
-      reportee: [
-        {
-          id: 101,
-          name: 'Amit'
-        },
-        {
-          id: 102,
-          name: 'Neha'
-        }
-      ]
-    };
-    this.userService
-      .addUser(newUserObject)
-      .subscribe({
-        next: () => {
-          alert('User Added');
-          this.loadUsers();
-          this.closeAddModal();
-          this.newUser = {
-            user_name: '',
-            email: '',
-            role: '',
-            reportee: []
-          };
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
-  }
-
-  saveEditRequest() {
-    if (this.isSaving) {
-      return;
-    }
-    const alreadyPending =
-      this.requests.find(
-        request =>
-          request.userId ==
-          this.selectedUser.id &&
-          request.status === 'PENDING'
-      );
-    if (alreadyPending) {
-      alert(
-        'Pending request already exists'
-      );
-      return;
-    }
-    this.isSaving = true;
-    const requestObject = {
-      requestType: 'EDIT',
-      userId: this.selectedUser.id,
-      oldData: this.users.find(
-        x => x.id === this.selectedUser.id
-      ),
-      newData: this.selectedUser,
-      status: 'PENDING',
-      actionTaken: false
+      reportee: reporteeArray
     };
 
-    this.requestService
-      .saveRequest(requestObject)
-      .subscribe({
-        next: () => {
-          alert('Request Saved');
-          this.showEditModal = false;
-          this.isSaving = false;
-          this.loadRequests();
-        },
-        error: (error) => {
-          console.log(error);
-          this.isSaving = false;
-        }
-      });
+    this.userService.addUser(newUserObject).subscribe({
+      next: () => {
+        alert('User Added');
+        this.loadUsers();
+        this.closeAddModal();
+      },
+      error: (error) => console.log(error)
+    });
   }
+
+  closeAddModal() {
+    this.showAddModal = false;
+    this.newUser = { user_name: '', email: '', role: '', reportee: [] };
+    this.manualReportees = ''; 
+  }
+
+
+saveEditRequest() {
+  if (this.isSaving) return;
+
+  const originalUserSource = this.users.find(x => x.id === this.selectedUser.id);
+  if (!originalUserSource) return;
+
+  // Check for existing pending
+  const alreadyPending = this.requests.find(
+    r => r.userId === this.selectedUser.id && r.status === 'PENDING'
+  );
+  if (alreadyPending) {
+    alert('Pending request already exists');
+    return;
+  }
+
+  // --- SYNC MANUALLY ADDED REPORTEES ---
+  // Convert the comma-separated string back into an array
+  this.selectedUser.reportee = this.manualReportees
+    .split(',')
+    .map(name => name.trim())
+    .filter(name => name !== '');
+
+  this.isSaving = true;
+
+  const requestObject = {
+    requestType: 'EDIT',
+    userId: this.selectedUser.id,
+    // Deep clone original to ensure 'Old' stays 'Old'
+    oldData: JSON.parse(JSON.stringify(originalUserSource)), 
+    // Deep clone selected to ensure 'New' captures current edits
+    newData: JSON.parse(JSON.stringify(this.selectedUser)),
+    status: 'PENDING',
+    actionTaken: false
+  };
+
+  this.requestService.saveRequest(requestObject).subscribe({
+    next: () => {
+      alert('Request Saved');
+      this.showEditModal = false;
+      this.isSaving = false;
+      this.loadRequests();
+    },
+    error: (err) => {
+      console.error(err);
+      this.isSaving = false;
+    }
+  });
+}
+
+
+
 
   acceptRequest(request: any) {
     request.actionTaken = true;
     request.status = 'ACCEPTED';
-    this.userService
-      .updateUser(
-        request.userId,
-        request.newData
-      )
-      .subscribe({
-        next: () => {
-          this.requestService
-            .updateRequest(
-              request.id,
-              request
-            )
-            .subscribe({
-              next: () => {
-                this.loadUsers();
-                this.loadRequests();
-                alert(
-                  'Request Accepted'
-                );
-              },
-              error: (error) => {
-                console.log(error);
-              }
-            });
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+
+    this.userService.updateUser(request.userId, request.newData).subscribe({
+      next: () => {
+        this.requestService.updateRequest(request.id, request).subscribe({
+          next: () => {
+            this.loadUsers();
+            this.loadRequests();
+            alert('Request Accepted');
+          },
+          error: (error) => console.log(error)
+        });
+      },
+      error: (error) => console.log(error)
+    });
   }
+
   rejectRequest(request: any) {
     request.actionTaken = true;
     request.status = 'REJECTED';
-    this.requestService
-      .updateRequest(
-        request.id,
-        request
-      )
-      .subscribe({
-        next: () => {
-          this.loadRequests();
-          alert(
-            'Request Rejected'
-          );
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
+
+    this.requestService.updateRequest(request.id, request).subscribe({
+      next: () => {
+        this.loadRequests();
+        alert('Request Rejected');
+      },
+      error: (error) => console.log(error)
+    });
   }
 
   deleteUser(userId: number) {
@@ -243,7 +268,7 @@ export class Dashboard implements OnInit {
           alert('User deleted');
           this.loadUsers();
         },
-        error: (err) => console.error(err)
+        error: (err) => console.log(err)
       });
     }
   }

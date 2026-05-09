@@ -1,248 +1,255 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f4f7fc;
-}
-
 .container {
-    width: 95%;
-    margin: 30px auto;
+    max-width: 1300px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f4f7fc;
 }
+
 
 h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0f172a;
     text-align: center;
-    font-size: 28px;
-    color: darkblue;
-    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 25px;
 }
+
+
+.btnalign {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    gap: 10px;
+}
+
+.addUser,
+.logout {
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.addUser {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    color: white;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+}
+
+.logout {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+.addUser:hover,
+.logout:hover {
+    transform: translateY(-2px);
+}
+
 
 table {
     width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border-collapse: separate;
+    border-spacing: 0 12px;
 }
 
 thead {
-    background-color: #2563eb;
-    color: white;
+    display: none;
 }
 
-thead th {
-    padding: 16px;
-    text-align: left;
-    font-size: 15px;
+
+tbody tr {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+    transition: 0.25s;
+}
+
+tbody tr:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
 }
 
 tbody td {
     padding: 14px 16px;
-    border-bottom: 1px solid #e5e7eb;
     font-size: 14px;
     color: #334155;
+    border: none;
 }
 
-tbody tr:hover {
-    background-color: #f8fafc;
-}
 
-button {
-    border: 1px solid grey;
-    cursor: pointer;
-    padding: 4px;
-    border-radius: 6px;
-    transition: 0.3s;
-    font-size: 14px;
-    background-color: #a0acbb;
-    height: 35px;
-}
-
-.addUser {
-    padding: 8px;
-    background-color: rgb(195, 231, 243);
-    border: 1px solid blue;
-    font-weight: bold;
-    color: maroon;
-    font-family: monospace;
-}
-
-.edit {
-    background-color: #6ce699;
-}
-
-.delete {
-    background-color: #f44949;
-}
-
-.menu {
-    background-color: #a0acbb;
-}
-
-.logout {
-    padding: 8px;
-    background-color: rgb(227, 62, 62);
-    border: 1px solid blue;
-    font-weight: bold;
-    color: white;
-    font-family: monospace;
-}
-.btnalign{
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-
-button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-button[type="button"] {
-    margin-right: 6px;
-}
-
-.add-btn {
-    background-color: #2563eb;
-    color: white;
-    margin-bottom: 20px;
-}
-
-.action-btn {
-    background-color: #e2e8f0;
-}
-
-.accept-btn {
-    background-color: #16a34a;
-    color: white;
-}
-
-.reject-btn {
-    background-color: #dc2626;
-    color: white;
-}
-
-.dropdown-box {
-    background-color: #f8fafc;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.request-card {
-    border: 1px solid #dbeafe;
-    background-color: white;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 15px;
-}
-
-.request-card p {
-    margin-bottom: 10px;
-    color: #475569;
-}
-
-.modal-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-}
-
-.modal-box {
-    text-align: center;
-    width: 400px;
-    background-color: white;
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.modal-box h3 {
-    color: #23406e;
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.modal-box input,
-.modal-box select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    outline: none;
-    font-size: 14px;
-}
-
-.modal-box input:focus,
-.modal-box select:focus {
-    border-color: #2563eb;
-}
-
-.modal-box button:first-child {
-    background-color: #2563eb;
-    color: white;
-}
-
-.modal-box button:last-child {
-    background-color: #e2e8f0;
-}
-
-.pending-title {
-    color: #1e293b;
-    margin-bottom: 15px;
+tbody td:first-child {
+    width: 160px;
 }
 
 .role-badge {
-    background-color: #dbeafe;
+    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
     color: #1d4ed8;
-    padding: 4px 10px;
-    border-radius: 20px;
+    padding: 5px 12px;
+    border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
 }
 
 .reportee-name {
-    background-color: #f1f5f9;
+    background: #f1f5f9;
     padding: 4px 10px;
-    border-radius: 20px;
-    margin-right: 5px;
+    border-radius: 999px;
     font-size: 12px;
-    display: inline-block;
-    margin-bottom: 5px;
+    margin-right: 5px;
 }
 
-.icon-btn {
-    width: 34px;
-    height: 34px;
+button {
+    border: none;
+    cursor: pointer;
     border-radius: 8px;
-    background-color: #eff6ff;
-    color: #2563eb;
-    font-size: 16px;
+    transition: 0.2s;
 }
 
-.icon-btn:hover {
-    background-color: #dbeafe;
+.edit {
+    background: #3b82f6;
+    color: white;
+    padding: 6px;
 }
 
-.dropdown-btn {
-    background-color: #f1f5f9;
+.delete {
+    margin: 7px;
+    background: #ef4444;
+    color: white;
+    padding: 6px;
 }
 
-.dropdown-btn:hover {
-    background-color: #e2e8f0;
+.menu {
+    background: #e2e8f0;
+    color: #0f172a;
+    padding: 6px;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.dropdown-box {
+    background: #f8fafc;
+    padding: 14px;
+    border-radius: 12px;
+    border-left: 4px solid #3b82f6;
+}
+
+.request-card {
+    background: white;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+
+.accept-btn {
+    background: #22c55e;
+    color: white;
+    padding: 6px 10px;
+}
+
+.reject-btn {
+    background: #ef4444;
+    color: white;
+    padding: 6px 10px;
+}
+
+.modal-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(6px);
+}
+
+.modal-box {
+    width: 420px;
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.modal-box h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 15px;
+}
+
+.modal-box input,
+.modal-box select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 992px) {
+    .container {
+        padding: 12px;
+    }
+
+    tbody td {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .btnalign {
+        flex-direction: column;
+    }
+
+    table {
+        border-spacing: 0 10px;
+    }
+
+    tbody tr {
+        display: block;
+        padding: 10px;
+    }
+
+    tbody td {
+        display: block;
+        text-align: left;
+        padding: 8px 10px;
+    }
+
+    tbody td:first-child {
+        width: 100%;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .modal-box {
+        width: 92%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    h2 {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 12px;
+    }
+
+    .role-badge {
+        font-size: 10px;
+    }
 }
