@@ -166,6 +166,19 @@
         }
       ],
       "id": "NiBUQl0iqiQ"
+    },
+    {
+      "user_name": "Trusha Padiyar",
+      "email": "trusha@gmail.com",
+      "role": {
+        "id": 5,
+        "name": "HR"
+      },
+      "reportee": [
+        "Rita",
+        "Disha"
+      ],
+      "id": "PyhvHq7-yQk"
     }
   ],
   "roles": [
@@ -2290,6 +2303,43 @@
       "status": "PENDING",
       "actionTaken": false,
       "id": "nm8QEz0Ns7Q"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "PyhvHq7-yQk",
+      "oldData": {
+        "user_name": "Trusha PAdiyar",
+        "email": "trusha@gmail.com",
+        "role": {
+          "id": 5,
+          "name": "HR"
+        },
+        "reportee": [
+          {
+            "name": "Rita"
+          },
+          {
+            "name": "Disha"
+          }
+        ],
+        "id": "PyhvHq7-yQk"
+      },
+      "newData": {
+        "user_name": "Trusha Padiyar",
+        "email": "trusha@gmail.com",
+        "role": {
+          "id": 5,
+          "name": "HR"
+        },
+        "reportee": [
+          "Rita",
+          "Disha"
+        ],
+        "id": "PyhvHq7-yQk"
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "4U_4l2yg-o8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

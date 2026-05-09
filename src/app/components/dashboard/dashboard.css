@@ -1,5 +1,5 @@
 .container {
-    max-width: 1300px;
+    max-width: 1900px;
     margin: 20px auto;
     padding: 20px;
     background: #f4f7fc;
@@ -221,6 +221,7 @@ button:hover {
     tbody tr {
         display: block;
         padding: 10px;
+        margin-bottom: 8px;
     }
 
     tbody td {
