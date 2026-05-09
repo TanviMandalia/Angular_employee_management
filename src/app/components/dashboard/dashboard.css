@@ -106,9 +106,11 @@ tbody td:first-child {
 
 button {
     border: none;
+    padding: 10px;
     cursor: pointer;
     border-radius: 8px;
     transition: 0.2s;
+    margin: 5px;
 }
 
 .edit {
