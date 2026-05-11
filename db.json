@@ -2303,8 +2303,8 @@
           "Karan"
         ]
       },
-      "status": "PENDING",
-      "actionTaken": false,
+      "status": "REJECTED",
+      "actionTaken": true,
       "id": "nm8QEz0Ns7Q"
     },
     {
@@ -2492,6 +2492,40 @@
       "status": "ACCEPTED",
       "actionTaken": true,
       "id": "7FzP4wy8QB8"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "2",
+      "oldData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": {
+          "id": 4,
+          "name": "Automation"
+        },
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "newData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com565",
+        "role": {
+          "id": 4,
+          "name": "Automation"
+        },
+        "reportee": [
+          "Karan"
+        ]
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "AxF0AoO478Y"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

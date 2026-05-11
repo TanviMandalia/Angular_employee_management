@@ -16,18 +16,12 @@ import { Router } from '@angular/router';
 export class Dashboard implements OnInit {
   users = signal<any[]>([]);
   requests = signal<any[]>([]);
-
-  // getReporteeNames(reporteeNames: string[]) {
-  //   return reporteeNames.join(', ');
-  // }
-
   getReporteeNames(reportees: any[]): string {
     if (!reportees || !Array.isArray(reportees)) {
       return '';
     }
     return reportees.map(r => r.name || r).join(', ');
   }
-
   openedDropdownId: number | null = null;
   showEditModal = false;
   showAddModal = false;
@@ -49,7 +43,7 @@ export class Dashboard implements OnInit {
     user_name: '',
     email: '',
     role: '',
-    reportee: [] as any[]
+    reportee: ''
   };
 
   constructor(
@@ -90,8 +84,8 @@ export class Dashboard implements OnInit {
 
   editUser(user: any) {
 
-    this.selectedUser = JSON.parse(JSON.stringify(user));
-
+    this.selectedUser = JSON.parse(JSON.stringify(user)); // convert the string data into object.
+                                   
     if (this.selectedUser.reportee) {
       if (Array.isArray(this.selectedUser.reportee)) {
         this.manualReportees = this.selectedUser.reportee
@@ -136,7 +130,7 @@ export class Dashboard implements OnInit {
       reportee: reporteeArray
     };
 
-    this.userService.addUser(newUserObject).subscribe({
+    this.userService.addUser(newUserObject).subscribe({ //Api call -> subscribe start learning -> next() -> succesfully update -> otherwise show the error                                                         
       next: () => {
         alert('User Added');
         this.loadUsers();
@@ -148,7 +142,7 @@ export class Dashboard implements OnInit {
 
   closeAddModal() {
     this.showAddModal = false;
-    this.newUser = { user_name: '', email: '', role: '', reportee: [] };
+    this.newUser = { user_name: '', email: '', role: '', reportee: '' };
     this.manualReportees = '';
   }
 

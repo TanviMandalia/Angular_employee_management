@@ -19,8 +19,8 @@
             <tr>
                 <td>
                     <button type="button" class="edit" (click)="editUser(user)"> 📝 </button>
-                    <button type="button" class="delete" (click)="deleteUser(user.id)"> 👉🗑️ </button>
-                    <button type="button" class="menu" (click)="toggleDropdown(user.id)">🔻</button>
+                    <button type="button" class="delete" (click)="deleteUser(user.id)"> Delete </button>
+                    <button type="button" class="menu" (click)="toggleDropdown(user.id)">{{ openedDropdownId === user.id ? '🔺' : '🔻' }}</button>
                 </td>
                 <td> {{ user.user_name }} </td>
                 <td> {{ user.email }} </td>
@@ -82,7 +82,7 @@
             }
         </select>
         <br><br>
-        <label> Reportees (comma separated):</label>
+        <label> Reportees</label>
         <input type="text" [(ngModel)]="manualReportees" placeholder="e.g. Amit, Neha, Karan">
         <br><br>
         <button type="button" [disabled]="isSaving" (click)="saveEditRequest()"> 💾 Save </button>
@@ -112,7 +112,7 @@
         </select>
 
         <br><br>
-        <label> Reportees (comma separated):</label>
+        <label> Reportee:</label>
         <input type="text" [(ngModel)]="manualReportees" placeholder="e.g. Amit, Neha, Karan">
         <br><br>
 

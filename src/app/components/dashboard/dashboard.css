@@ -58,10 +58,6 @@ table {
     border-spacing: 0 12px;
 }
 
-thead {
-    display: none;
-}
-
 
 tbody tr {
     background: white;
