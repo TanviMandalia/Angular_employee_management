@@ -125,9 +125,9 @@ export class Dashboard implements OnInit {
       .map(name => ({ name: name }));
 
 
-    // const roleName = typeof this.newUser.role === 'object'
-    //   ? (this.newUser.role as any).name
-    //   : this.newUser.role;
+    const roleName = typeof this.newUser.role === 'object'
+      ? (this.newUser.role as any).name
+      : this.newUser.role;
 
     const newUserObject = {
       user_name: this.newUser.user_name,

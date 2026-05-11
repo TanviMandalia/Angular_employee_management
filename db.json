@@ -52,18 +52,13 @@
       "user_name": "Bhavika Chhatbar",
       "email": "bhavika@gmail.com",
       "role": {
-        "id": 1,
-        "name": "Developer"
+        "id": 6,
+        "name": "Software Enginner"
       },
       "reportee": [
-        {
-          "id": 101,
-          "name": "Amit"
-        },
-        {
-          "id": 102,
-          "name": "Neha"
-        }
+        "Amit",
+        "Neha",
+        "Ritu"
       ],
       "id": "Qtg6i65gsgM"
     },
@@ -2457,6 +2452,46 @@
       "status": "PENDING",
       "actionTaken": false,
       "id": "7kLaWyDn91k"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "Qtg6i65gsgM",
+      "oldData": {
+        "user_name": "Bhavika Chhatbar",
+        "email": "bhavika@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          {
+            "id": 101,
+            "name": "Amit"
+          },
+          {
+            "id": 102,
+            "name": "Neha"
+          }
+        ],
+        "id": "Qtg6i65gsgM"
+      },
+      "newData": {
+        "user_name": "Bhavika Chhatbar",
+        "email": "bhavika@gmail.com",
+        "role": {
+          "id": 6,
+          "name": "Software Enginner"
+        },
+        "reportee": [
+          "Amit",
+          "Neha",
+          "Ritu"
+        ],
+        "id": "Qtg6i65gsgM"
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "7FzP4wy8QB8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
