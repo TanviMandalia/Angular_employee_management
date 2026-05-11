@@ -36,14 +36,15 @@
     },
     {
       "user_name": "Dhruvi Sapovadiya",
-      "email": "dhruvi123@gmail.com",
+      "email": "dhruvi@gmail.com",
       "role": {
-        "id": 5,
-        "name": "HR"
+        "id": 4,
+        "name": "Automation"
       },
       "reportee": [
         "Rohit",
-        "Bhumi"
+        "Bhumi",
+        "tarisha"
       ],
       "id": "EbbMCIsRWTM"
     },
@@ -168,17 +169,24 @@
       "id": "NiBUQl0iqiQ"
     },
     {
-      "user_name": "Trusha Padiyar",
-      "email": "trusha@gmail.com",
+      "user_name": "Amisha Balwani",
+      "email": "amisha@gmail.com",
       "role": {
-        "id": 5,
-        "name": "HR"
+        "id": 3,
+        "name": "Manager"
       },
       "reportee": [
-        "Rita",
-        "Disha"
+        {
+          "name": "Krisha"
+        },
+        {
+          "name": "Sweta"
+        },
+        {
+          "name": "Ruchi"
+        }
       ],
-      "id": "PyhvHq7-yQk"
+      "id": "BHlVe7znEwU"
     }
   ],
   "roles": [
@@ -2306,7 +2314,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "PyhvHq7-yQk",
+      "userId": null,
       "oldData": {
         "user_name": "Trusha PAdiyar",
         "email": "trusha@gmail.com",
@@ -2340,6 +2348,115 @@
       "status": "ACCEPTED",
       "actionTaken": true,
       "id": "4U_4l2yg-o8"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "EbbMCIsRWTM",
+      "oldData": {
+        "user_name": "Dhruvi Sapovadiya",
+        "email": "dhruvi123@gmail.com",
+        "role": {
+          "id": 5,
+          "name": "HR"
+        },
+        "reportee": [
+          "Rohit",
+          "Bhumi"
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "newData": {
+        "user_name": "Dhruvi Sapovadiya",
+        "email": "dhruvi@gmail.com",
+        "role": {
+          "id": 4,
+          "name": "Automation"
+        },
+        "reportee": [
+          "Rohit",
+          "Bhumi",
+          "tarisha"
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "dYFsfNQsmJQ"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "EbbMCIsRWTM",
+      "oldData": {
+        "user_name": "Dhruvi Sapovadiya",
+        "email": "dhruvi@gmail.com",
+        "role": {
+          "id": 4,
+          "name": "Automation"
+        },
+        "reportee": [
+          "Rohit",
+          "Bhumi",
+          "tarisha"
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "newData": {
+        "user_name": "Dhruvi Sapovadiya",
+        "email": "dhruvi123@gmail.com",
+        "role": {
+          "id": 4,
+          "name": "Automation"
+        },
+        "reportee": [
+          "Rohit",
+          "Bhumi"
+        ],
+        "id": "EbbMCIsRWTM"
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "Qlb9JnkAjNQ"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "BHlVe7znEwU",
+      "oldData": {
+        "user_name": "Amisha Balwani",
+        "email": "amisha@gmail.com",
+        "role": {
+          "id": 3,
+          "name": "Manager"
+        },
+        "reportee": [
+          {
+            "name": "Krisha"
+          },
+          {
+            "name": "Sweta"
+          },
+          {
+            "name": "Ruchi"
+          }
+        ],
+        "id": "BHlVe7znEwU"
+      },
+      "newData": {
+        "user_name": "Amisha Balwani",
+        "email": "amisha@gmail.com",
+        "role": {
+          "id": 1,
+          "name": "Developer"
+        },
+        "reportee": [
+          "Krisha",
+          "Sweta",
+          "Ruchi"
+        ],
+        "id": "BHlVe7znEwU"
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "7kLaWyDn91k"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

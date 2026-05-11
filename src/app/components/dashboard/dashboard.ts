@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { User } from '../../services/user';
@@ -11,13 +11,11 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './dashboard.html',
-  styleUrls: ['./dashboard.css']
+  styleUrl: './dashboard.css'
 })
 export class Dashboard implements OnInit {
-  users: any[] = [];
-  requests: any[] = [];
-  expandedRequestIds: any[] = []; // make to allow multiple requests
-
+  users = signal<any[]>([]);
+  requests = signal<any[]>([]);
 
   // getReporteeNames(reporteeNames: string[]) {
   //   return reporteeNames.join(', ');
@@ -55,14 +53,13 @@ export class Dashboard implements OnInit {
   };
 
   constructor(
-    private authService: Auth,
+    private authService: Auth,//inject to all services
     private router: Router,
     private userService: User,
     private requestService: Request,
-    private cd: ChangeDetectorRef
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {// immidiatelly function ne call karva
     this.loadUsers();
     this.loadRequests();
   }
@@ -70,23 +67,18 @@ export class Dashboard implements OnInit {
   loadUsers() {
     this.userService.getUsers().subscribe({
       next: (response: any) => {
-        this.users = response;
-        this.cd.detectChanges();
+        this.users.set(response);
       },
       error: (error) => console.log(error)
     });
   }
 
-  onLogout() {
-    this.authService.logout();
-    this.router.navigate(['/']);
-  }
+
 
   loadRequests() {
     this.requestService.getAllRequests().subscribe({
       next: (response: any) => {
-        this.requests = response;
-        this.cd.detectChanges();
+        this.requests.set(response);
       },
       error: (error) => console.log(error)
     });
@@ -96,40 +88,24 @@ export class Dashboard implements OnInit {
     this.openedDropdownId = this.openedDropdownId === id ? null : id;
   }
 
-toggleRequest(requestId: any) {
-  const index = this.expandedRequestIds.indexOf(requestId);
-  if (index > -1) {
-  
-    this.expandedRequestIds.splice(index, 1);
-  } else {
+  editUser(user: any) {
 
-    this.expandedRequestIds.push(requestId);
-  }
-}
+    this.selectedUser = JSON.parse(JSON.stringify(user));
 
-isExpanded(requestId: any): boolean {
-  return this.expandedRequestIds.includes(requestId);
-}
-
-
-editUser(user: any) {
-
-  this.selectedUser = JSON.parse(JSON.stringify(user));
-  
-  if (this.selectedUser.reportee) {
-    if (Array.isArray(this.selectedUser.reportee)) {
-      this.manualReportees = this.selectedUser.reportee
-        .map((r: any) => r.name || r)
-        .join(', ');
+    if (this.selectedUser.reportee) {
+      if (Array.isArray(this.selectedUser.reportee)) {
+        this.manualReportees = this.selectedUser.reportee
+          .map((r: any) => r.name || r)
+          .join(', ');
+      } else {
+        this.manualReportees = this.selectedUser.reportee;
+      }
     } else {
-      this.manualReportees = this.selectedUser.reportee;
+      this.manualReportees = '';
     }
-  } else {
-    this.manualReportees = '';
+
+    this.showEditModal = true;
   }
-  
-  this.showEditModal = true;
-}
 
 
   closeModal() {
@@ -141,17 +117,17 @@ editUser(user: any) {
   }
 
   saveUser() {
-   
+
     const reporteeArray = this.manualReportees
       .split(',')
       .map(name => name.trim())
       .filter(name => name !== '')
-      .map(name => ({ name: name })); 
+      .map(name => ({ name: name }));
 
-   
-    const roleName = typeof this.newUser.role === 'object'
-      ? (this.newUser.role as any).name
-      : this.newUser.role;
+
+    // const roleName = typeof this.newUser.role === 'object'
+    //   ? (this.newUser.role as any).name
+    //   : this.newUser.role;
 
     const newUserObject = {
       user_name: this.newUser.user_name,
@@ -173,58 +149,53 @@ editUser(user: any) {
   closeAddModal() {
     this.showAddModal = false;
     this.newUser = { user_name: '', email: '', role: '', reportee: [] };
-    this.manualReportees = ''; 
+    this.manualReportees = '';
   }
 
 
-saveEditRequest() {
-  if (this.isSaving) return;
+  saveEditRequest() {
+    // if (this.isSaving) return;
 
-  const originalUserSource = this.users.find(x => x.id === this.selectedUser.id);
-  if (!originalUserSource) return;
+    const originalUserSource = this.users().find(x => x.id === this.selectedUser.id);
+    if (!originalUserSource) return;
 
-  // Check for existing pending
-  const alreadyPending = this.requests.find(
-    r => r.userId === this.selectedUser.id && r.status === 'PENDING'
-  );
-  if (alreadyPending) {
-    alert('Pending request already exists');
-    return;
-  }
-
-  // --- SYNC MANUALLY ADDED REPORTEES ---
-  // Convert the comma-separated string back into an array
-  this.selectedUser.reportee = this.manualReportees
-    .split(',')
-    .map(name => name.trim())
-    .filter(name => name !== '');
-
-  this.isSaving = true;
-
-  const requestObject = {
-    requestType: 'EDIT',
-    userId: this.selectedUser.id,
-    // Deep clone original to ensure 'Old' stays 'Old'
-    oldData: JSON.parse(JSON.stringify(originalUserSource)), 
-    // Deep clone selected to ensure 'New' captures current edits
-    newData: JSON.parse(JSON.stringify(this.selectedUser)),
-    status: 'PENDING',
-    actionTaken: false
-  };
-
-  this.requestService.saveRequest(requestObject).subscribe({
-    next: () => {
-      alert('Request Saved');
-      this.showEditModal = false;
-      this.isSaving = false;
-      this.loadRequests();
-    },
-    error: (err) => {
-      console.error(err);
-      this.isSaving = false;
+    const alreadyPending = this.requests().find(
+      r => r.userId === this.selectedUser.id && r.status === 'PENDING'
+    );
+    if (alreadyPending) {
+      alert('Pending request already exists');
+      return;
     }
-  });
-}
+
+    this.selectedUser.reportee = this.manualReportees
+      .split(',')
+      .map(name => name.trim())
+      .filter(name => name !== '');
+
+    this.isSaving = true;
+
+    const requestObject = {
+      requestType: 'EDIT',
+      userId: this.selectedUser.id,
+      oldData: JSON.parse(JSON.stringify(originalUserSource)),
+      newData: JSON.parse(JSON.stringify(this.selectedUser)),
+      status: 'PENDING',
+      actionTaken: false
+    };
+
+    this.requestService.saveRequest(requestObject).subscribe({
+      next: () => {
+        alert('Request Saved');
+        this.showEditModal = false;
+        this.isSaving = false;
+        this.loadRequests();
+      },
+      error: (err) => {
+        console.error(err);
+        this.isSaving = false;
+      }
+    });
+  }
 
 
 
@@ -271,5 +242,10 @@ saveEditRequest() {
         error: (err) => console.log(err)
       });
     }
+  }
+
+  onLogout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 }

@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            @for (user of users; track $index) {
+            @for (user of users(); track $index) {
             <tr>
                 <td>
                     <button type="button" class="edit" (click)="editUser(user)"> 📝 </button>
@@ -37,7 +37,7 @@
                 <td colspan="5">
                     <div>
                         <h4> Pending Requests </h4><br>
-                        @for (request of requests; track $index) {
+                        @for (request of requests(); track $index) {
                         @if (request.userId == user.id && request.status == 'PENDING') {
                         <div style="border:1px solid gray; padding:10px; margin-bottom:10px;">
                             <p> <b> Old Email: </b> {{ request.oldData?.email }} </p>
@@ -75,7 +75,7 @@
         <label> Email:</label>
         <input type="email" [(ngModel)]="selectedUser.email" name="email">
         <br><br>
-        <label> Role:</label>
+        <label> Role:</label><br>
         <select [(ngModel)]="selectedUser.role" name="role">
             @for (role of roles; track role.id) {
             <option [ngValue]="role"> {{ role.name }} </option>
@@ -104,7 +104,7 @@
         <input type="email" [(ngModel)]="newUser.email">
         <br><br>
 
-        <label> Role:</label>
+        <label> Role:</label><br>
         <select [(ngModel)]="newUser.role">
             @for (role of roles; track role.id) {
             <option [ngValue]="role"> {{ role.name }} </option>
