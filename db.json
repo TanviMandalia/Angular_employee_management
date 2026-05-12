@@ -1,21 +1,6 @@
 {
   "users": [
     {
-      "id": "2",
-      "user_name": "Priya Patel",
-      "email": "priyapatel@gmail.com",
-      "role": {
-        "id": 4,
-        "name": "Automation"
-      },
-      "reportee": [
-        {
-          "id": 103,
-          "name": "Karan"
-        }
-      ]
-    },
-    {
       "user_name": "Tanvi Mandaliya",
       "email": "tanvi@gmail.com",
       "role": {
@@ -199,6 +184,20 @@
         }
       ],
       "id": "126qjJDVWAE"
+    },
+    {
+      "user_name": "Trusha Padhiyar",
+      "email": "trusha@gmail.com",
+      "role": "Tester",
+      "reportee": [
+        {
+          "name": "Priya Patel"
+        },
+        {
+          "name": "Priyanshi Mandaliya"
+        }
+      ],
+      "id": "dB8CTTkPEIo"
     }
   ],
   "roles": [
@@ -758,7 +757,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "2",
+      "userId": null,
       "oldData": {
         "id": "2",
         "user_name": "Priya Patel",
@@ -795,7 +794,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "2",
+      "userId": null,
       "oldData": {
         "id": "2",
         "user_name": "Priya Patel",
@@ -1012,7 +1011,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "2",
+      "userId": null,
       "oldData": {
         "id": "2",
         "user_name": "Priya Patel",
@@ -1508,7 +1507,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "2",
+      "userId": null,
       "oldData": {
         "id": "2",
         "user_name": "Priya Patel",
@@ -1590,7 +1589,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "2",
+      "userId": null,
       "oldData": {
         "id": "2",
         "user_name": "Priya Patel",
@@ -2003,7 +2002,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "2",
+      "userId": null,
       "oldData": {
         "id": "2",
         "user_name": "Priya Patel",
@@ -2040,7 +2039,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "2",
+      "userId": null,
       "oldData": {
         "id": "2",
         "user_name": "Priya Patel",
@@ -2292,7 +2291,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "2",
+      "userId": null,
       "oldData": {
         "id": "2",
         "user_name": "Priya Patel",
@@ -2512,7 +2511,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "2",
+      "userId": null,
       "oldData": {
         "id": "2",
         "user_name": "Priya Patel",
@@ -2540,9 +2539,190 @@
           "Karan"
         ]
       },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "AxF0AoO478Y"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": null,
+      "oldData": {
+        "user_name": "Priyanshi Mandaliya",
+        "email": "Priyansho@gmail.com",
+        "role": "HR",
+        "reportee": [
+          {
+            "name": "Amit"
+          },
+          {
+            "name": "Neha"
+          },
+          {
+            "name": "Rutu Sharma"
+          },
+          {
+            "name": "Sweta Jani"
+          }
+        ],
+        "id": "kLxmqyinQ1Q"
+      },
+      "newData": {
+        "id": "kLxmqyinQ1Q",
+        "user_name": "Priyanshi Mandaliya",
+        "email": "Priyansho@gmail.com",
+        "role": "Software Enginner",
+        "reportee": [
+          "Priya Patel",
+          "Tanvi Mandaliya",
+          "Dhruvi Sapovadiya",
+          "Bhavika Chhatbar",
+          "Krishna Pandit",
+          "Dhruvi Mehta",
+          "Isha Ranpura",
+          "Sweta Jani",
+          "Jatin Vora",
+          "Amisha Balwani",
+          "Rutu Sharma",
+          "Priyanshi Mandaliya",
+          "Trusha Padhiyar"
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "cIKgdfnerXI"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": null,
+      "oldData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "newData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": "Tester",
+        "reportee": [
+          "Karan"
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "uIbGT2N5Elc"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": null,
+      "oldData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          {
+            "id": 103,
+            "name": "Karan"
+          }
+        ]
+      },
+      "newData": {
+        "id": "2",
+        "user_name": "Priya Patel",
+        "email": "priyapatel12345@gmail.com",
+        "role": "Tester",
+        "reportee": [
+          "Karan",
+          "Rutu Sharma",
+          "Trusha Padhiyar"
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "H-sjSb7PlX0"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": null,
+      "oldData": {
+        "user_name": "Sapovadiya Dhruvi ",
+        "email": "dhruvi23@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          {
+            "name": "Tanvi Mandaliya"
+          },
+          {
+            "name": "Dhruvi Sapovadiya"
+          },
+          {
+            "name": "Janvi Sedani"
+          }
+        ],
+        "id": "lNrfcDOqcnU"
+      },
+      "newData": {
+        "id": "lNrfcDOqcnU",
+        "user_name": " Dhruvi  P@tel",
+        "email": "dhruvi23@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          "Tanvi Mandaliya",
+          "Dhruvi Sapovadiya",
+          "Janvi Sedani"
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "RIkW3BO4v6A"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "dB8CTTkPEIo",
+      "oldData": {
+        "user_name": "Trusha Padhiyar",
+        "email": "trusha@gmail.com",
+        "role": "Tester",
+        "reportee": [
+          {
+            "name": "Priya Patel"
+          },
+          {
+            "name": "Priyanshi Mandaliya"
+          }
+        ],
+        "id": "dB8CTTkPEIo"
+      },
+      "newData": {
+        "id": "dB8CTTkPEIo",
+        "user_name": "Trusha Padhiyar 56",
+        "email": "trusha@gmail.commmm",
+        "role": "Manager",
+        "reportee": [
+          "Tanvi Mandaliya",
+          "Dhruvi Sapovadiya",
+          "Bhavika Chhatbar",
+          "Krishna Pandit",
+          "Dhruvi Mehta",
+          "Isha Ranpura",
+          "Sweta Jani",
+          "Jatin Vora",
+          "Amisha Balwani",
+          "Rutu Sharma",
+          "Trusha Padhiyar"
+        ]
+      },
       "status": "PENDING",
       "actionTaken": false,
-      "id": "AxF0AoO478Y"
+      "id": "aF981ChmkV0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

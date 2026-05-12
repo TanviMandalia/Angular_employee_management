@@ -39,17 +39,13 @@ export class Dashboard implements OnInit {
 
   users = signal<UserData[]>([]);
   requests = signal<RequestData[]>([]);
-
   openedDropdownId: number | null = null;
-
   showEditModal = false;
   showAddModal = false;
-
   isSaving = false;
-
   manualReportees = '';
-
   selectedReportees: string[] = [];
+
 
   selectedUser: UserData = {
     user_name: '',
@@ -79,7 +75,7 @@ export class Dashboard implements OnInit {
     private router: Router,
     private userService: User,
     private requestService: Request
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadUsers();
@@ -129,6 +125,22 @@ export class Dashboard implements OnInit {
     return names;
   }
 
+  hasPendingRequests(userId: number): boolean {
+    return this.requests().some(
+      request =>
+        request.userId === userId &&
+        request.status === 'PENDING'
+    );
+  }
+
+  selectAll() {
+    this.selectedReportees = this.users().map(u => u.user_name);
+  }
+
+  clearAll() {
+    this.selectedReportees = [];
+  }
+
   toggleDropdown(id: number): void {
     this.openedDropdownId = this.openedDropdownId === id ? null : id;
   }
@@ -143,6 +155,10 @@ export class Dashboard implements OnInit {
     }
   }
 
+  hasRequests(userId: number): boolean {
+    return this.requests().some(r => r.userId === userId);
+  }
+
   editUser(user: UserData): void {
     this.selectedUser = {
       id: user.id,
@@ -154,7 +170,7 @@ export class Dashboard implements OnInit {
 
     this.selectedReportees = [];
 
-    if (Array.isArray(user.reportee)) {
+    if (user.reportee instanceof Array) {
       for (let i = 0; i < user.reportee.length; i++) {
         const r = user.reportee[i];
 
@@ -225,16 +241,6 @@ export class Dashboard implements OnInit {
     }
 
     if (!originalUserSource) return;
-
-    const allRequests = this.requests();
-
-    for (let i = 0; i < allRequests.length; i++) {
-      if (allRequests[i].userId === this.selectedUser.id && allRequests[i].status === 'PENDING') {
-        alert('Pending request already exists');
-        return;
-      }
-    }
-
     const reporteeArray: string[] = [];
 
     for (let i = 0; i < this.selectedReportees.length; i++) {
