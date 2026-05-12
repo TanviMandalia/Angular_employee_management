@@ -182,6 +182,23 @@
         }
       ],
       "id": "BHlVe7znEwU"
+    },
+    {
+      "user_name": "Rutu Sharma",
+      "email": "rutu@gmail.com",
+      "role": "HR",
+      "reportee": [
+        {
+          "name": "Priya Patel"
+        },
+        {
+          "name": "Isha Ranpura"
+        },
+        {
+          "name": "Jatin Vora"
+        }
+      ],
+      "id": "126qjJDVWAE"
     }
   ],
   "roles": [

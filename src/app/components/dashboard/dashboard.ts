@@ -6,6 +6,28 @@ import { Request } from '../../services/request';
 import { Auth } from '../../services/auth';
 import { Router } from '@angular/router';
 
+interface Reportee {
+  name: string;
+}
+
+interface UserData {
+  id?: number;
+  user_name: string;
+  email: string;
+  role: string;
+  reportee: Reportee[] | string[];
+}
+
+interface RequestData {
+  id?: number;
+  requestType: string;
+  userId: number;
+  oldData: UserData;
+  newData: UserData;
+  status: string;
+  actionTaken: boolean;
+}
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -14,21 +36,34 @@ import { Router } from '@angular/router';
   styleUrl: './dashboard.css'
 })
 export class Dashboard implements OnInit {
-  users = signal<any[]>([]);
-  requests = signal<any[]>([]);
-  getReporteeNames(reportees: any[]): string {
-    if (!reportees || !Array.isArray(reportees)) {
-      return '';
-    }
-    return reportees.map(r => r.name || r).join(', ');
-  }
+
+  users = signal<UserData[]>([]);
+  requests = signal<RequestData[]>([]);
+
   openedDropdownId: number | null = null;
+
   showEditModal = false;
   showAddModal = false;
-  selectedUser: any = { reportee: [] };
-  isSaving = false;
-  manualReportees: string = '';
 
+  isSaving = false;
+
+  manualReportees = '';
+
+  selectedReportees: string[] = [];
+
+  selectedUser: UserData = {
+    user_name: '',
+    email: '',
+    role: '',
+    reportee: []
+  };
+
+  newUser: UserData = {
+    user_name: '',
+    email: '',
+    role: '',
+    reportee: []
+  };
 
   roles = [
     { id: 1, name: 'Developer' },
@@ -39,140 +74,181 @@ export class Dashboard implements OnInit {
     { id: 6, name: 'Software Enginner' }
   ];
 
-  newUser = {
-    user_name: '',
-    email: '',
-    role: '',
-    reportee: ''
-  };
-
   constructor(
-    private authService: Auth,//inject to all services
+    private authService: Auth,
     private router: Router,
     private userService: User,
-    private requestService: Request,
-  ) { }
+    private requestService: Request
+  ) {}
 
-  ngOnInit(): void {// immidiatelly function ne call karva
+  ngOnInit(): void {
     this.loadUsers();
     this.loadRequests();
   }
 
-  loadUsers() {
+  loadUsers(): void {
     this.userService.getUsers().subscribe({
       next: (response: any) => {
-        this.users.set(response);
-      },
-      error: (error) => console.log(error)
+        this.users.set(
+          response.map((u: any) => ({
+            ...u,
+            role: typeof u.role === 'object' ? u.role.name : u.role
+          }))
+        );
+      }
     });
   }
 
-
-
-  loadRequests() {
+  loadRequests(): void {
     this.requestService.getAllRequests().subscribe({
       next: (response: any) => {
         this.requests.set(response);
-      },
-      error: (error) => console.log(error)
+      }
     });
   }
 
-  toggleDropdown(id: number) {
+  getReporteeNames(reportees: Reportee[] | string[]): string {
+    if (!reportees) return '';
+
+    let names = '';
+
+    for (let i = 0; i < reportees.length; i++) {
+      const reportee = reportees[i];
+
+      if (typeof reportee === 'string') {
+        names += reportee;
+      } else {
+        names += reportee.name;
+      }
+
+      if (i < reportees.length - 1) {
+        names += ', ';
+      }
+    }
+
+    return names;
+  }
+
+  toggleDropdown(id: number): void {
     this.openedDropdownId = this.openedDropdownId === id ? null : id;
   }
 
-  editUser(user: any) {
+  toggleReportee(name: string): void {
+    const index = this.selectedReportees.indexOf(name);
 
-    this.selectedUser = JSON.parse(JSON.stringify(user)); // convert the string data into object.
-                                   
-    if (this.selectedUser.reportee) {
-      if (Array.isArray(this.selectedUser.reportee)) {
-        this.manualReportees = this.selectedUser.reportee
-          .map((r: any) => r.name || r)
-          .join(', ');
-      } else {
-        this.manualReportees = this.selectedUser.reportee;
-      }
+    if (index === -1) {
+      this.selectedReportees.push(name);
     } else {
-      this.manualReportees = '';
+      this.selectedReportees.splice(index, 1);
+    }
+  }
+
+  editUser(user: UserData): void {
+    this.selectedUser = {
+      id: user.id,
+      user_name: user.user_name,
+      email: user.email,
+      role: user.role,
+      reportee: user.reportee
+    };
+
+    this.selectedReportees = [];
+
+    if (Array.isArray(user.reportee)) {
+      for (let i = 0; i < user.reportee.length; i++) {
+        const r = user.reportee[i];
+
+        if (typeof r === 'string') {
+          this.selectedReportees.push(r);
+        } else {
+          this.selectedReportees.push(r.name);
+        }
+      }
     }
 
     this.showEditModal = true;
   }
 
-
-  closeModal() {
+  closeModal(): void {
     this.showEditModal = false;
   }
 
-  openAddModal() {
+  openAddModal(): void {
     this.showAddModal = true;
   }
 
-  saveUser() {
+  saveUser(): void {
+    const reporteeArray: Reportee[] = [];
 
-    const reporteeArray = this.manualReportees
-      .split(',')
-      .map(name => name.trim())
-      .filter(name => name !== '')
-      .map(name => ({ name: name }));
+    for (let i = 0; i < this.selectedReportees.length; i++) {
+      reporteeArray.push({ name: this.selectedReportees[i] });
+    }
 
-
-    const roleName = typeof this.newUser.role === 'object'
-      ? (this.newUser.role as any).name
-      : this.newUser.role;
-
-    const newUserObject = {
+    const newUserObject: UserData = {
       user_name: this.newUser.user_name,
       email: this.newUser.email,
       role: this.newUser.role,
       reportee: reporteeArray
     };
 
-    this.userService.addUser(newUserObject).subscribe({ //Api call -> subscribe start learning -> next() -> succesfully update -> otherwise show the error                                                         
+    this.userService.addUser(newUserObject).subscribe({
       next: () => {
         alert('User Added');
         this.loadUsers();
         this.closeAddModal();
-      },
-      error: (error) => console.log(error)
+      }
     });
   }
 
-  closeAddModal() {
+  closeAddModal(): void {
     this.showAddModal = false;
-    this.newUser = { user_name: '', email: '', role: '', reportee: '' };
-    this.manualReportees = '';
+    this.newUser = {
+      user_name: '',
+      email: '',
+      role: '',
+      reportee: []
+    };
+
+    this.selectedReportees = [];
   }
 
+  saveEditRequest(): void {
+    let originalUserSource: UserData | null = null;
 
-  saveEditRequest() {
-    // if (this.isSaving) return;
+    const allUsers = this.users();
 
-    const originalUserSource = this.users().find(x => x.id === this.selectedUser.id);
-    if (!originalUserSource) return;
-
-    const alreadyPending = this.requests().find(
-      r => r.userId === this.selectedUser.id && r.status === 'PENDING'
-    );
-    if (alreadyPending) {
-      alert('Pending request already exists');
-      return;
+    for (let i = 0; i < allUsers.length; i++) {
+      if (allUsers[i].id === this.selectedUser.id) {
+        originalUserSource = allUsers[i];
+        break;
+      }
     }
 
-    this.selectedUser.reportee = this.manualReportees
-      .split(',')
-      .map(name => name.trim())
-      .filter(name => name !== '');
+    if (!originalUserSource) return;
 
+    const allRequests = this.requests();
+
+    for (let i = 0; i < allRequests.length; i++) {
+      if (allRequests[i].userId === this.selectedUser.id && allRequests[i].status === 'PENDING') {
+        alert('Pending request already exists');
+        return;
+      }
+    }
+
+    const reporteeArray: string[] = [];
+
+    for (let i = 0; i < this.selectedReportees.length; i++) {
+      reporteeArray.push(this.selectedReportees[i]);
+    }
+
+    this.selectedUser.reportee = reporteeArray;
     this.isSaving = true;
 
-    const requestObject = {
+    const requestObject: RequestData = {
       requestType: 'EDIT',
-      userId: this.selectedUser.id,
-      oldData: JSON.parse(JSON.stringify(originalUserSource)),
-      newData: JSON.parse(JSON.stringify(this.selectedUser)),
+      userId: this.selectedUser.id || 0,
+      oldData: originalUserSource,
+      newData: this.selectedUser,
       status: 'PENDING',
       actionTaken: false
     };
@@ -183,62 +259,51 @@ export class Dashboard implements OnInit {
         this.showEditModal = false;
         this.isSaving = false;
         this.loadRequests();
-      },
-      error: (err) => {
-        console.error(err);
-        this.isSaving = false;
       }
     });
   }
 
-
-
-
-  acceptRequest(request: any) {
+  acceptRequest(request: RequestData): void {
     request.actionTaken = true;
     request.status = 'ACCEPTED';
 
     this.userService.updateUser(request.userId, request.newData).subscribe({
       next: () => {
-        this.requestService.updateRequest(request.id, request).subscribe({
+        this.requestService.updateRequest(request.id || 0, request).subscribe({
           next: () => {
             this.loadUsers();
             this.loadRequests();
             alert('Request Accepted');
-          },
-          error: (error) => console.log(error)
+          }
         });
-      },
-      error: (error) => console.log(error)
+      }
     });
   }
 
-  rejectRequest(request: any) {
+  rejectRequest(request: RequestData): void {
     request.actionTaken = true;
     request.status = 'REJECTED';
 
-    this.requestService.updateRequest(request.id, request).subscribe({
+    this.requestService.updateRequest(request.id || 0, request).subscribe({
       next: () => {
         this.loadRequests();
         alert('Request Rejected');
-      },
-      error: (error) => console.log(error)
+      }
     });
   }
 
-  deleteUser(userId: number) {
-    if (confirm('Are you sure?')) {
-      this.userService.deleteUser(userId).subscribe({
-        next: () => {
-          alert('User deleted');
-          this.loadUsers();
-        },
-        error: (err) => console.log(err)
-      });
-    }
+  deleteUser(userId: number): void {
+    if (!confirm('Are you sure?')) return;
+
+    this.userService.deleteUser(userId).subscribe({
+      next: () => {
+        alert('User deleted');
+        this.loadUsers();
+      }
+    });
   }
 
-  onLogout() {
+  onLogout(): void {
     this.authService.logout();
     this.router.navigate(['/']);
   }
