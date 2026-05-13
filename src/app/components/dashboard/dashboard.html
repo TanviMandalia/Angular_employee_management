@@ -187,13 +187,13 @@
             <div class="actions">
                 <button type="button" (click)="selectAll()">Select All</button>
             </div>
-            @for (u of users(); track u.id) {
+            @for (u of users().filter(x => x.id !== selectedUser.id);track u.id) {
             <label class="reportee-item">
                 <input type="checkbox" [checked]="selectedReportees.includes(u.user_name)"
                     (change)="toggleReportee(u.user_name)" />
                 <span>{{ u.user_name }}</span>
             </label>
-            } 
+            }
         </div>
         <br><br>
         <button type="button" [disabled]="isSaving" (click)="saveEditRequest()">

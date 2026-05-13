@@ -190,6 +190,16 @@
         }
       ],
       "id": "dB8CTTkPEIo"
+    },
+    {
+      "id": "JX7tNu6YHQs",
+      "user_name": "Priya Patel",
+      "email": "priya@gmail.com",
+      "role": "Automation",
+      "reportee": [
+        "Priya Patel",
+        "Priyanshi Mandaliya"
+      ]
     }
   ],
   "roles": [
@@ -2773,6 +2783,110 @@
       "status": "REJECTED",
       "actionTaken": true,
       "id": "te-Ls6sc8nk"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "JX7tNu6YHQs",
+      "oldData": {
+        "user_name": "Priya Patel",
+        "email": "priya@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          {
+            "name": "Priya Patel"
+          },
+          {
+            "name": "Priyanshi Mandaliya"
+          },
+          {
+            "name": "Trusha Padhiyar"
+          }
+        ],
+        "id": "JX7tNu6YHQs"
+      },
+      "newData": {
+        "id": "JX7tNu6YHQs",
+        "user_name": "Priya Patel",
+        "email": "priya@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          "Priya Patel",
+          "Priyanshi Mandaliya",
+          "Dhruvi Mehta"
+        ]
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "gTTvWiHhXBQ"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "JX7tNu6YHQs",
+      "oldData": {
+        "user_name": "Priya Patel",
+        "email": "priya@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          {
+            "name": "Priya Patel"
+          },
+          {
+            "name": "Priyanshi Mandaliya"
+          },
+          {
+            "name": "Trusha Padhiyar"
+          }
+        ],
+        "id": "JX7tNu6YHQs"
+      },
+      "newData": {
+        "id": "JX7tNu6YHQs",
+        "user_name": "Priya Patel",
+        "email": "priya@gmail.com",
+        "role": "Tester",
+        "reportee": [
+          "Priya Patel",
+          "Priyanshi Mandaliya",
+          "Trusha Padhiyar"
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "6oof6PQMRNk"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "JX7tNu6YHQs",
+      "oldData": {
+        "user_name": "Priya Patel",
+        "email": "priya@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          {
+            "name": "Priya Patel"
+          },
+          {
+            "name": "Priyanshi Mandaliya"
+          },
+          {
+            "name": "Trusha Padhiyar"
+          }
+        ],
+        "id": "JX7tNu6YHQs"
+      },
+      "newData": {
+        "id": "JX7tNu6YHQs",
+        "user_name": "Priya Patel",
+        "email": "priya@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          "Priya Patel",
+          "Priyanshi Mandaliya"
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "sKJslt5VTZ4"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
