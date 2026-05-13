@@ -3,7 +3,7 @@
     <br>
     <div class="btnalign">
         <button type="button" class="addUser" (click)="openAddModal()">
-            📥 Add User
+            ➕ Add User
         </button>
         <button type="button" class="logout" (click)="onLogout()">
             ⏻ Log-Out
@@ -11,16 +11,14 @@
     </div>
     <br><br>
     <table width="100%" cellpadding="10">
-        <thead>
-            <tr>
+        <tbody>
+             <tr>
                 <th>Actions</th>
                 <th>User Name</th>
                 <th>Email</th>
                 <th>Role</th>
                 <th>Reportees</th>
             </tr>
-        </thead>
-        <tbody>
 
             @for (user of users(); track user.id) {
             <tr>
@@ -165,7 +163,7 @@
 
 <div class="modal-bg" (click)="closeAddModal()">
     <div class="modal-box" (click)="$event.stopPropagation()">
-        <h3>📥 Add User</h3>
+        <h3>➕ Add User</h3>
         <br>
         <label>Username:</label>
         <input type="text" [(ngModel)]="newUser.user_name">

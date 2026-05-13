@@ -1,23 +1,15 @@
 {
   "users": [
     {
+      "id": "3dSzmisC1e8",
       "user_name": "Tanvi Mandaliya",
       "email": "tanvi@gmail.com",
-      "role": {
-        "id": 3,
-        "name": "Manager"
-      },
+      "role": "Automation",
       "reportee": [
-        {
-          "id": 101,
-          "name": "Amit"
-        },
-        {
-          "id": 102,
-          "name": "Neha"
-        }
-      ],
-      "id": "3dSzmisC1e8"
+        "Krishna",
+        "Yash",
+        "Isha"
+      ]
     },
     {
       "user_name": "Dhruvi Sapovadiya",
@@ -1501,8 +1493,8 @@
         ],
         "id": "ge87cuPVUAo"
       },
-      "status": "PENDING",
-      "actionTaken": false,
+      "status": "REJECTED",
+      "actionTaken": true,
       "id": "Qw_DRkHN8ws"
     },
     {
@@ -2239,8 +2231,8 @@
         ],
         "id": "3dSzmisC1e8"
       },
-      "status": "PENDING",
-      "actionTaken": false,
+      "status": "ACCEPTED",
+      "actionTaken": true,
       "id": "qDJXtfKylxs"
     },
     {
@@ -2285,8 +2277,8 @@
         ],
         "id": "NiBUQl0iqiQ"
       },
-      "status": "PENDING",
-      "actionTaken": false,
+      "status": "REJECTED",
+      "actionTaken": true,
       "id": "F0CDksv16b0"
     },
     {
@@ -2424,8 +2416,8 @@
         ],
         "id": "EbbMCIsRWTM"
       },
-      "status": "PENDING",
-      "actionTaken": false,
+      "status": "REJECTED",
+      "actionTaken": true,
       "id": "Qlb9JnkAjNQ"
     },
     {
@@ -2720,9 +2712,38 @@
           "Trusha Padhiyar"
         ]
       },
-      "status": "PENDING",
-      "actionTaken": false,
+      "status": "REJECTED",
+      "actionTaken": true,
       "id": "aF981ChmkV0"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "3dSzmisC1e8",
+      "oldData": {
+        "user_name": "Tanvi Mandaliya",
+        "email": "tanvi1215@gmail.com",
+        "role": "Manager",
+        "reportee": [
+          "Krishna",
+          "Yash",
+          "Isha"
+        ],
+        "id": "3dSzmisC1e8"
+      },
+      "newData": {
+        "id": "3dSzmisC1e8",
+        "user_name": "Tanvi Mandaliya",
+        "email": "tanvi@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          "Krishna",
+          "Yash",
+          "Isha"
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "RbnNrTgCPfg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

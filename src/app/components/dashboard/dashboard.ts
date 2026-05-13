@@ -46,7 +46,6 @@ export class Dashboard implements OnInit {
   manualReportees = '';
   selectedReportees: string[] = [];
 
-
   selectedUser: UserData = {
     user_name: '',
     email: '',
@@ -67,7 +66,8 @@ export class Dashboard implements OnInit {
     { id: 3, name: 'Manager' },
     { id: 4, name: 'Automation' },
     { id: 5, name: 'HR' },
-    { id: 6, name: 'Software Enginner' }
+    { id: 6, name: 'Software Enginner' },
+    { id: 7, name: "CEO" }
   ];
 
   constructor(
@@ -77,12 +77,12 @@ export class Dashboard implements OnInit {
     private requestService: Request
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.loadUsers();
     this.loadRequests();
   }
 
-  loadUsers(): void {
+  loadUsers() {
     this.userService.getUsers().subscribe({
       next: (response: any) => {
         this.users.set(
@@ -95,7 +95,7 @@ export class Dashboard implements OnInit {
     });
   }
 
-  loadRequests(): void {
+  loadRequests() {
     this.requestService.getAllRequests().subscribe({
       next: (response: any) => {
         this.requests.set(response);
@@ -103,7 +103,7 @@ export class Dashboard implements OnInit {
     });
   }
 
-  getReporteeNames(reportees: Reportee[] | string[]): string {
+  getReporteeNames(reportees: Reportee[] | string[]) {
     if (!reportees) return '';
 
     let names = '';
@@ -125,7 +125,7 @@ export class Dashboard implements OnInit {
     return names;
   }
 
-  hasPendingRequests(userId: number): boolean {
+  hasPendingRequests(userId: number) {
     return this.requests().some(
       request =>
         request.userId === userId &&
@@ -141,11 +141,11 @@ export class Dashboard implements OnInit {
     this.selectedReportees = [];
   }
 
-  toggleDropdown(id: number): void {
+  toggleDropdown(id: number) {
     this.openedDropdownId = this.openedDropdownId === id ? null : id;
   }
 
-  toggleReportee(name: string): void {
+  toggleReportee(name: string) {
     const index = this.selectedReportees.indexOf(name);
 
     if (index === -1) {
@@ -155,11 +155,11 @@ export class Dashboard implements OnInit {
     }
   }
 
-  hasRequests(userId: number): boolean {
+  hasRequests(userId: number) {
     return this.requests().some(r => r.userId === userId);
   }
 
-  editUser(user: UserData): void {
+  editUser(user: UserData) {
     this.selectedUser = {
       id: user.id,
       user_name: user.user_name,
@@ -185,15 +185,15 @@ export class Dashboard implements OnInit {
     this.showEditModal = true;
   }
 
-  closeModal(): void {
+  closeModal() {
     this.showEditModal = false;
   }
 
-  openAddModal(): void {
+  openAddModal() {
     this.showAddModal = true;
   }
 
-  saveUser(): void {
+  saveUser() {
     const reporteeArray: Reportee[] = [];
 
     for (let i = 0; i < this.selectedReportees.length; i++) {
@@ -216,7 +216,7 @@ export class Dashboard implements OnInit {
     });
   }
 
-  closeAddModal(): void {
+  closeAddModal() {
     this.showAddModal = false;
     this.newUser = {
       user_name: '',
@@ -228,7 +228,7 @@ export class Dashboard implements OnInit {
     this.selectedReportees = [];
   }
 
-  saveEditRequest(): void {
+  saveEditRequest() {
     let originalUserSource: UserData | null = null;
 
     const allUsers = this.users();
@@ -269,7 +269,7 @@ export class Dashboard implements OnInit {
     });
   }
 
-  acceptRequest(request: RequestData): void {
+  acceptRequest(request: RequestData) {
     request.actionTaken = true;
     request.status = 'ACCEPTED';
 
@@ -286,7 +286,7 @@ export class Dashboard implements OnInit {
     });
   }
 
-  rejectRequest(request: RequestData): void {
+  rejectRequest(request: RequestData) {
     request.actionTaken = true;
     request.status = 'REJECTED';
 
@@ -298,7 +298,7 @@ export class Dashboard implements OnInit {
     });
   }
 
-  deleteUser(userId: number): void {
+  deleteUser(userId: number) {
     if (!confirm('Are you sure?')) return;
 
     this.userService.deleteUser(userId).subscribe({
@@ -309,7 +309,9 @@ export class Dashboard implements OnInit {
     });
   }
 
-  onLogout(): void {
+  onLogout() {
+    if (!confirm('Are you sure!! You Wnat to Log-out?')) return;
+
     this.authService.logout();
     this.router.navigate(['/']);
   }

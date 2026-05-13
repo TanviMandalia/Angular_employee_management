@@ -1,14 +1,17 @@
 <div class="container">
-        <div class="card">
-            <h2 class="login-head"> Login </h2>
-            
+    <div class="card">
+        <h2 class="login-head"> Login </h2>
+        <form (ngSubmit)="loginUser()">
             <label> 📧 Username:</label>
-            <input type="text" class="form-control" [(ngModel)]="username">
+            <input type="text" class="form-control" [(ngModel)]="username" name="username"
+                placeholder="Enter Your User Name:"><br>
             <label> 🔏 Password:</label>
-            <input type="password" class="form-control" [(ngModel)]="password">
-
-            <p class="error"> {{ errorMessage }} </p>
-
-            <button class="btn btn-primary w-100" (click)="loginUser()"> Login </button>
-        </div>
+            <input type="password" class="form-control" [(ngModel)]="password" name="password"
+                placeholder="Enter Your Password"><br>
+            <button type="submit" class="btn btn-primary w-100"> Login </button>
+        </form>
+        @if(errorMessage){
+        <p class="error"> {{ errorMessage }} </p>
+        }
+    </div>
 </div>
