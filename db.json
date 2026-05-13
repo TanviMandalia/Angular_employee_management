@@ -2744,6 +2744,35 @@
       "status": "ACCEPTED",
       "actionTaken": true,
       "id": "RbnNrTgCPfg"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "3dSzmisC1e8",
+      "oldData": {
+        "id": "3dSzmisC1e8",
+        "user_name": "Tanvi Mandaliya",
+        "email": "tanvi@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          "Krishna",
+          "Yash",
+          "Isha"
+        ]
+      },
+      "newData": {
+        "id": "3dSzmisC1e8",
+        "user_name": "Tanvi Mandaliya453467",
+        "email": "tanvi@gmail.com",
+        "role": "CEO",
+        "reportee": [
+          "Krishna",
+          "Yash",
+          "Isha"
+        ]
+      },
+      "status": "REJECTED",
+      "actionTaken": true,
+      "id": "te-Ls6sc8nk"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

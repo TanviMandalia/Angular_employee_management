@@ -12,7 +12,7 @@
     <br><br>
     <table width="100%" cellpadding="10">
         <tbody>
-             <tr>
+            <tr>
                 <th>Actions</th>
                 <th>User Name</th>
                 <th>Email</th>
@@ -68,6 +68,15 @@
                             </p>
                             <hr>
                             <p>
+                                <b>Old Name:</b>
+                                {{ request.oldData.user_name }}
+                            </p>
+                            <p>
+                                <b>New Name:</b>
+                                {{ request.newData.user_name }}
+                            </p>
+                            <hr>
+                            <p>
                                 <b>Old Email:</b>
                                 {{ request.oldData.email }}
                             </p>
@@ -115,50 +124,6 @@
     </table>
 </div>
 
-@if (showEditModal) {
-
-<div class="modal-bg" (click)="closeModal()">
-    <div class="modal-box" (click)="$event.stopPropagation()">
-        <h3>Edit User</h3>
-        <br>
-        <label>Username:</label>
-        <input type="text" [(ngModel)]="selectedUser.user_name">
-        <br><br>
-        <label>Email:</label>
-        <input type="email" [(ngModel)]="selectedUser.email">
-        <br><br>
-        <label>Role:</label>
-        <select [(ngModel)]="selectedUser.role">
-            @for (role of roles; track role.id) {
-            <option [value]="role.name">{{ role.name }}</option>
-            }
-        </select>
-        <br><br>
-        <label class="field-label">Reportees:</label>
-        <div class="reportee-box">
-            <div class="actions">
-                <button type="button" (click)="selectAll()">Select All</button>
-            </div>
-            @for (u of users(); track u.id) {
-            <label class="reportee-item">
-                <input type="checkbox" [checked]="selectedReportees.includes(u.user_name)"
-                    (change)="toggleReportee(u.user_name)" />
-                <span>{{ u.user_name }}</span>
-            </label>
-            }
-        </div>
-        <br><br>
-        <button type="button" [disabled]="isSaving" (click)="saveEditRequest()">
-            💾 Save
-        </button>
-
-        <button type="button" (click)="closeModal()">
-            ❌ Cancel
-        </button>
-    </div>
-</div>
-}
-
 @if (showAddModal) {
 
 <div class="modal-bg" (click)="closeAddModal()">
@@ -194,6 +159,50 @@
         <br><br>
         <button type="button" (click)="saveUser()">💾 Save User</button>
         <button type="button" (click)="closeAddModal()">❌ Cancel</button>
+    </div>
+</div>
+}
+
+@if (showEditModal) {
+
+<div class="modal-bg" (click)="closeModal()">
+    <div class="modal-box" (click)="$event.stopPropagation()">
+        <h3>Edit User</h3>
+        <br>
+        <label>Username:</label>
+        <input type="text" [(ngModel)]="selectedUser.user_name">
+        <br><br>
+        <label>Email:</label>
+        <input type="email" [(ngModel)]="selectedUser.email">
+        <br><br>
+        <label>Role:</label>
+        <select [(ngModel)]="selectedUser.role">
+            @for (role of roles; track role.id) {
+            <option [value]="role.name">{{ role.name }}</option>
+            }
+        </select>
+        <br><br>
+        <label class="field-label">Reportees:</label>
+        <div class="reportee-box">
+            <div class="actions">
+                <button type="button" (click)="selectAll()">Select All</button>
+            </div>
+            @for (u of users(); track u.id) {
+            <label class="reportee-item">
+                <input type="checkbox" [checked]="selectedReportees.includes(u.user_name)"
+                    (change)="toggleReportee(u.user_name)" />
+                <span>{{ u.user_name }}</span>
+            </label>
+            } 
+        </div>
+        <br><br>
+        <button type="button" [disabled]="isSaving" (click)="saveEditRequest()">
+            💾 Save
+        </button>
+
+        <button type="button" (click)="closeModal()">
+            ❌ Cancel
+        </button>
     </div>
 </div>
 }

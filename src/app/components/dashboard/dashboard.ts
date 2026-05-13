@@ -87,8 +87,8 @@ export class Dashboard implements OnInit {
       next: (response: any) => {
         this.users.set(
           response.map((u: any) => ({
-            ...u,
-            role: typeof u.role === 'object' ? u.role.name : u.role
+            ...u, // spread oprator is used for take all value from value/object & copy them here
+            role: typeof u.role === 'object' ? u.role.name : u.role //check is role an object
           }))
         );
       }
@@ -99,13 +99,14 @@ export class Dashboard implements OnInit {
     this.requestService.getAllRequests().subscribe({
       next: (response: any) => {
         this.requests.set(response);
-      }
+      },
+      error:(err) => {
+        console.log("Unable to load API", err);
+      },
     });
   }
 
   getReporteeNames(reportees: Reportee[] | string[]) {
-    if (!reportees) return '';
-
     let names = '';
 
     for (let i = 0; i < reportees.length; i++) {
@@ -160,6 +161,7 @@ export class Dashboard implements OnInit {
   }
 
   editUser(user: UserData) {
+
     this.selectedUser = {
       id: user.id,
       user_name: user.user_name,
