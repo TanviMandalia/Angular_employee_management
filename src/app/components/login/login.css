@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -13,7 +13,7 @@ body {
 .card {
     display: grid;
     justify-content: center;
-    height: 330px;
+    height: 350px;
     width: 230px;
     border-radius: 16px;
     background: #ffffff;
@@ -32,7 +32,7 @@ label {
 }
 form{
     display: grid;
-    gap: 5px;
+    gap: 2px;
 }
 
 .form-control {
@@ -61,4 +61,9 @@ form{
 .text-danger {
     font-size: 13px;
     margin-bottom: 10px;
+}
+
+.error{
+    color: red;
+    margin: 2px;
 }

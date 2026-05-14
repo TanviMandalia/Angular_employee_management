@@ -100,7 +100,7 @@ export class Dashboard implements OnInit {
       next: (response: any) => {
         this.requests.set(response);
       },
-      error:(err) => {
+      error: (err) => {
         console.log("Unable to load API", err);
       },
     });
@@ -170,7 +170,7 @@ export class Dashboard implements OnInit {
       reportee: user.reportee
     };
 
-    this.selectedReportees = [];
+    this.selectedReportees = []; //to avoid old data mixing with new data
 
     if (user.reportee instanceof Array) {
       for (let i = 0; i < user.reportee.length; i++) {
@@ -185,14 +185,6 @@ export class Dashboard implements OnInit {
     }
 
     this.showEditModal = true;
-  }
-
-  closeModal() {
-    this.showEditModal = false;
-  }
-
-  openAddModal() {
-    this.showAddModal = true;
   }
 
   saveUser() {
@@ -214,11 +206,17 @@ export class Dashboard implements OnInit {
         alert('User Added');
         this.loadUsers();
         this.closeAddModal();
+      }, error: (err) => {
+        console.log("Unable to fetch user from API.", err);
       }
     });
   }
 
-  closeAddModal() {
+  openAddModal() {
+    this.showAddModal = true;
+  }
+
+  closeAddModal() { //close add user pop-up model
     this.showAddModal = false;
     this.newUser = {
       user_name: '',
@@ -227,8 +225,14 @@ export class Dashboard implements OnInit {
       reportee: []
     };
 
-    this.selectedReportees = [];
+    this.selectedReportees = []; //because of old selected user will remain visible when model reopens, so we reset it.
   }
+
+  closeModal() { //this is for edit
+    this.showEditModal = false;
+  }
+
+
 
   saveEditRequest() {
     let originalUserSource: UserData | null = null;
@@ -267,6 +271,8 @@ export class Dashboard implements OnInit {
         this.showEditModal = false;
         this.isSaving = false;
         this.loadRequests();
+      }, error: (err) => {
+        console.log("Unable to fetch request from API.", err);
       }
     });
   }

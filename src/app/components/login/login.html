@@ -8,10 +8,11 @@
             <label> 🔏 Password:</label>
             <input type="password" class="form-control" [(ngModel)]="password" name="password"
                 placeholder="Enter Your Password"><br>
+            @if(errorMessage){
+            <p class="error"> {{ errorMessage }} </p>
+            }
             <button type="submit" class="btn btn-primary w-100"> Login </button>
         </form>
-        @if(errorMessage){
-        <p class="error"> {{ errorMessage }} </p>
-        }
+
     </div>
 </div>

@@ -18,7 +18,7 @@ export class User {
 
   updateUser(id: any, data: any) {
     return this.http.put(
-      `${this.apiUrl}/${id}`,
+      `${this.apiUrl}/${id}`, //create dynanic url
       data
     );
 

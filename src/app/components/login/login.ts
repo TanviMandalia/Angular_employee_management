@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 export class Login {
   username: string = '';
   password: string = '';
-  email: string = '';
   errorMessage: string = '';
 
   constructor(
@@ -29,7 +28,7 @@ export class Login {
     if (this.username === 'user' && this.password === 'user123') {
       this.router.navigate(['/dashboard']);
     } else {
-      this.errorMessage = 'Invalid Username or Password';
+      this.errorMessage = 'Check your Username & Password may be it is incorrect!';
     }
   }
 }
