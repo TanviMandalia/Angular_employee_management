@@ -30,13 +30,18 @@
                         Delete
                     </button>
 
-                    <button type="button" class="menu" [disabled]="!hasRequests(user.id || 0)"
-                        (click)="toggleDropdown(user.id || 0)">
-                        @if (openedDropdownId === user.id) {
+                    <button type="button" class="menu" [disabled]="!hasPendingRequests(user.id || 0)"
+                        (click)="openPending(user.id || 0)">
+                        @if (openedRowId === user.id && openedType === 'pending') {
                         🔺
                         } @else {
                         🔻
                         }
+                    </button>
+
+                    <button type="button" class="history" [disabled]="!hasRequests(user.id || 0)"
+                        (click)="openHistory(user.id || 0)">
+                        ⌛
                     </button>
                 </td>
                 <td>{{ user.user_name }}</td>
@@ -45,28 +50,22 @@
                 <td>{{ getReporteeNames(user.reportee) }}</td>
             </tr>
 
-            @if (openedDropdownId === user.id) {
+            @if (openedRowId === user.id) {
+
             <tr>
                 <td colspan="5">
                     <div>
-                        <h4>Request History</h4>
-                        <br>
+                        @if (openedType === 'pending') {
+                        <h4>Pending Requests</h4>
                         @for (request of requests(); track request.id) {
-                        @if (request.userId === user.id) {
+                        @if (
+                        request.userId === user.id &&
+                        request.status === 'PENDING'
+                        ) {
                         <div class="request-card">
-                            <p>
-                                <b>Status:</b>
-                                @if (request.status === 'PENDING') {
-                                <span class="pending">PENDING</span>
-                                }
-                                @if (request.status === 'ACCEPTED') {
-                                <span class="accepted">ACCEPTED</span>
-                                }
-                                @if (request.status === 'REJECTED') {
-                                <span class="rejected">REJECTED</span>
-                                }
-                            </p>
-                            <hr>
+                            @if (request.status === 'PENDING') {
+                            <span class="pending">PENDING</span>
+                            }
                             <p>
                                 <b>Old Name:</b>
                                 {{ request.oldData.user_name }}
@@ -102,17 +101,69 @@
                                 <b>New Reportee:</b>
                                 {{ getReporteeNames(request.newData.reportee) }}
                             </p>
-                            <br>
-                            @if (request.status === 'PENDING') {
-                            <button type="button" [disabled]="request.actionTaken" (click)="acceptRequest(request)">
+                            <button type="button" (click)="acceptRequest(request)">
                                 Accept
                             </button>
-                            <button type="button" [disabled]="request.actionTaken" (click)="rejectRequest(request)">
+
+                            <button type="button" (click)="rejectRequest(request)">
                                 Reject
                             </button>
-                            }
                         </div>
-                        <br>
+                        }
+                        }
+                        }
+
+                        @if (openedType === 'history') {
+                        <h4>Request History</h4>
+                        @for (request of requests(); track request.id) {
+                        @if (request.userId === user.id) {
+                        <div class="request-card">
+                            <b>STATUS:</b>
+                            @if (request.status === 'PENDING') {
+                            <span class="pending">PENDING</span>
+                            }
+                            @if (request.status === 'ACCEPTED') {
+                            <span class="accepted">ACCEPTED</span>
+                            }
+                            @if (request.status === 'REJECTED') {
+                            <span class="rejected">REJECTED</span>}
+                            <p>
+                                <b>Old Name:</b>
+                                {{ request.oldData.user_name }}
+                            </p>
+                            <p>
+                                <b>New Name:</b>
+                                {{ request.newData.user_name }}
+                            </p>
+                            <hr>
+                            <p>
+                                <b>Old Email:</b>
+                                {{ request.oldData.email }}
+                            </p>
+                            <p>
+                                <b>New Email:</b>
+                                {{ request.newData.email }}
+                            </p>
+                            <hr>
+                            <p>
+                                <b>Old Role:</b>
+                                {{ request.oldData.role }}
+                            </p>
+                            <p>
+                                <b>New Role:</b>
+                                {{ request.newData.role }}
+                            </p>
+                            <hr>
+                            <p>
+                                <b>Old Reportee:</b>
+                                {{ getReporteeNames(request.oldData.reportee) }}
+                            </p>
+                            <p>
+                                <b>New Reportee:</b>
+                                {{ getReporteeNames(request.newData.reportee) }}
+                            </p>
+                        </div>
+                        }
                         }
                         }
                     </div>

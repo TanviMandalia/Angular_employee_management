@@ -1,21 +1,21 @@
 .container {
-    max-width: 1900px;
+    max-width: 1850px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 22px;
     background: #f4f7fc;
+    border-radius: 18px;
 }
 
-
 h2 {
-    font-size: 26px;
+    font-size: 28px;
     font-weight: 700;
     color: #0f172a;
     text-align: center;
+    margin-bottom: 28px;
     letter-spacing: 0.5px;
-    margin-bottom: 25px;
 }
 
-thead{
+thead {
     display: none;
 }
 
@@ -23,67 +23,66 @@ thead{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 18px;
-    gap: 10px;
+    margin-bottom: 22px;
+    gap: 12px;
 }
 
 .addUser,
 .logout {
-    padding: 10px 14px;
-    border-radius: 10px;
+    padding: 11px 16px;
+    border-radius: 12px;
     font-weight: 600;
     border: none;
     cursor: pointer;
-    transition: 0.25s;
+    transition: 0.3s ease;
+    color: white;
 }
 
 .addUser {
     background: linear-gradient(135deg, #22c55e, #16a34a);
-    color: white;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.25);
+    box-shadow: 0 5px 14px rgba(34, 197, 94, 0.25);
 }
 
 .logout {
     background: linear-gradient(135deg, #ef4444, #dc2626);
-    color: white;
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+    box-shadow: 0 5px 14px rgba(239, 68, 68, 0.25);
 }
 
 .addUser:hover,
 .logout:hover {
     transform: translateY(-2px);
+    opacity: 0.95;
 }
-
 
 table {
     width: 100%;
     border-collapse: separate;
-    border-spacing: 0 12px;
+    border-spacing: 0 14px;
 }
 
-
 tbody tr {
-    background: white;
-    border-radius: 14px;
-    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
-    transition: 0.25s;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    transition: 0.3s ease;
 }
 
 tbody tr:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
 }
 
 tbody td {
-    padding: 14px 16px;
+    padding: 16px;
     font-size: 14px;
     color: #334155;
     border: none;
+    vertical-align: middle;
 }
 
-
 tbody td:first-child {
-    width: 160px;
+    width: 240px;
 }
 
 .role-badge {
@@ -96,7 +95,8 @@ tbody td:first-child {
 }
 
 .reportee-name {
-    background: #f1f5f9;
+    background: #eef2ff;
+    color: #4338ca;
     padding: 4px 10px;
     border-radius: 999px;
     font-size: 12px;
@@ -105,62 +105,119 @@ tbody td:first-child {
 
 button {
     border: none;
-    padding: 10px;
+    padding: 8px 12px;
     cursor: pointer;
-    border-radius: 8px;
-    transition: 0.2s;
-    margin: 5px;
-}
-
-.edit {
-    background: #3b82f6;
-    color: white;
-    padding: 6px;
-}
-
-.delete {
-    margin: 7px;
-    background: #ef4444;
-    color: white;
-    padding: 6px;
-}
-
-.menu {
-    background: #e2e8f0;
-    color: #0f172a;
-    padding: 6px;
+    border-radius: 10px;
+    transition: 0.25s ease;
+    margin: 4px;
+    font-weight: 600;
 }
 
 button:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
+}
+
+.edit {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.delete {
+    background: #fee2e2;
+    color: #dc2626;
+}
+
+.menu {
+    background: #e0f2fe;
+    color: #0369a1;
+}
+
+.history {
+    background: #ede9fe;
+    color: #6d28d9;
+}
+
+.menu:disabled,
+.history:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .dropdown-box {
     background: #f8fafc;
-    padding: 14px;
-    border-radius: 12px;
-    border-left: 4px solid #3b82f6;
+    padding: 16px;
+    border-radius: 14px;
+    border-left: 5px solid #3b82f6;
 }
 
 .request-card {
-    background: white;
-    border-radius: 10px;
-    padding: 12px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 14px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.05);
+    transition: 0.3s ease;
 }
 
-
-.accept-btn {
-    background: #22c55e;
-    color: white;
-    padding: 6px 10px;
+.request-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
 }
 
-.reject-btn {
-    background: #ef4444;
-    color: white;
-    padding: 6px 10px;
+.request-card p {
+    margin: 10px 0;
+    line-height: 1.6;
+    color: #334155;
+}
+
+.request-card b {
+    color: #0f172a;
+}
+
+.request-card hr {
+    border: none;
+    border-top: 1px dashed #cbd5e1;
+    margin: 14px 0;
+}
+
+.pending {
+    color: #f59e0b;
+    font-weight: 700;
+}
+
+.accepted {
+    color: #16a34a;
+    font-weight: 700;
+}
+
+.rejected {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+.request-card button {
+    padding: 9px 15px;
+    border-radius: 9px;
+    margin-top: 10px;
+}
+
+.request-card button:first-of-type {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.request-card button:first-of-type:hover {
+    background: #bbf7d0;
+}
+
+.request-card button:last-of-type {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.request-card button:last-of-type:hover {
+    background: #fecaca;
 }
 
 .modal-bg {
@@ -171,131 +228,108 @@ button:hover {
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(6px);
+    z-index: 1000;
 }
 
 .modal-box {
-    width: 420px;
+    width: 430px;
     background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    padding: 26px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.22);
 }
 
 .modal-box h3 {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 700;
     color: #0f172a;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
 }
 
 .modal-box input,
 .modal-box select {
-    width: 96%;
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #e2e8f0;
-    margin-bottom: 10px;
+    width: 95%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #dbe2ea;
+    margin-bottom: 14px;
+    background: #f8fafc;
+    transition: 0.2s ease;
 }
 
+.modal-box input:focus,
+.modal-box select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: white;
+}
 
 .field-label {
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     display: block;
+    color: #0f172a;
 }
 
 .reportee-box {
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 10px;
-    max-height: 160px;
+    border: 1px solid #dbe2ea;
+    border-radius: 12px;
+    padding: 12px;
+    max-height: 180px;
     overflow-y: auto;
-    background: #fff;
+    background: #f8fafc;
 }
 
 .reportee-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 6px 8px;
-    border-radius: 4px;
+    padding: 9px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s ease;
 }
 
 .reportee-item:hover {
-    background: #f5f5f5;
+    background: #eef2ff;
 }
 
 .reportee-item input {
     width: 16px;
     height: 16px;
-    cursor: pointer;
 }
 
 .reportee-item span {
     font-size: 14px;
-    color: #333;
+    color: #334155;
 }
 
 .actions {
     display: flex;
-    gap: 10px;
-    margin-bottom: 8px;
+    justify-content: flex-end;
+    margin-bottom: 12px;
 }
 
 .actions button {
-    padding: 4px 10px;
-    border: 1px solid #ccc;
-    background: #f8f8f8;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-.actions button:hover {
-    background: #eee;
-}
-
-.menu:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.request-card {
-    border: 1px solid gray;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-}
-
-.pending {
-    color: orange;
-    font-weight: bold;
-}
-
-.accepted {
-    color: green;
-    font-weight: bold;
-}
-
-.rejected {
-    color: red;
-    font-weight: bold;
+    background: #2563eb;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
 }
 
 .dropdown-container {
-    width: 250px;
+    width: 100%;
     position: relative;
 }
 
 .dropdown-btn {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #dbe2ea;
     background: white;
     cursor: pointer;
     text-align: left;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .reportee-dropdown {
@@ -304,54 +338,24 @@ button:hover {
     max-height: 250px;
     overflow-y: auto;
     background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 5px;
+    border: 1px solid #dbe2ea;
+    border-radius: 10px;
+    margin-top: 6px;
     padding: 10px;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.actions {
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.actions button {
-    padding: 5px 10px;
-    border: none;
-    background: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.reportee-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 5px 0;
-    cursor: pointer;
-}
-
-.reportee-item:hover {
-    background: #f5f5f5;
-}
-
-.field-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 992px) {
+
     .container {
-        padding: 12px;
+        padding: 14px;
     }
 
     tbody td {
         font-size: 13px;
     }
+
 }
 
 @media (max-width: 768px) {
@@ -360,45 +364,38 @@ button:hover {
         flex-direction: column;
     }
 
-    table {
-        border-spacing: 0 10px;
-    }
-
     tbody tr {
         display: block;
         padding: 10px;
-        margin-bottom: 8px;
     }
 
     tbody td {
         display: block;
-        text-align: left;
-        padding: 8px 10px;
+        width: 100%;
+        padding: 10px;
     }
 
     tbody td:first-child {
         width: 100%;
         display: flex;
-        gap: 8px;
         flex-wrap: wrap;
+        gap: 8px;
     }
 
     .modal-box {
         width: 92%;
     }
+
 }
 
 @media (max-width: 480px) {
 
     h2 {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     button {
         font-size: 12px;
     }
 
-    .role-badge {
-        font-size: 10px;
-    }
 }

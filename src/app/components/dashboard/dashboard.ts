@@ -39,12 +39,12 @@ export class Dashboard implements OnInit {
 
   users = signal<UserData[]>([]);
   requests = signal<RequestData[]>([]);
-  openedDropdownId: number | null = null;
   showEditModal = false;
   showAddModal = false;
   isSaving = false;
-  manualReportees = '';
   selectedReportees: string[] = [];
+  openedRowId: number | null = null;
+  openedType: 'pending' | 'history' | null = null;
 
   selectedUser: UserData = {
     user_name: '',
@@ -67,7 +67,10 @@ export class Dashboard implements OnInit {
     { id: 4, name: 'Automation' },
     { id: 5, name: 'HR' },
     { id: 6, name: 'Software Enginner' },
-    { id: 7, name: "CEO" }
+    { id: 7, name: "CEO" },
+    {id: 8, name:"CTO"},
+    {id: 9, name:"Business Analyst"},
+    {id: 10, name:"DevOps Engineer"}
   ];
 
   constructor(
@@ -78,7 +81,7 @@ export class Dashboard implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadUsers();
+    this.loadUsers();  
     this.loadRequests();
   }
 
@@ -142,10 +145,6 @@ export class Dashboard implements OnInit {
     this.selectedReportees = [];
   }
 
-  toggleDropdown(id: number) {
-    this.openedDropdownId = this.openedDropdownId === id ? null : id;
-  }
-
   toggleReportee(name: string) {
     const index = this.selectedReportees.indexOf(name);
 
@@ -153,6 +152,27 @@ export class Dashboard implements OnInit {
       this.selectedReportees.push(name);
     } else {
       this.selectedReportees.splice(index, 1);
+    }
+  }
+
+  openPending(userId: number) {
+    if (this.openedRowId === userId && this.openedType === 'pending') {
+      this.openedRowId = null;
+      this.openedType = null;
+    } else {
+      this.openedRowId = userId;
+      this.openedType = 'pending';
+    }
+  }
+
+  openHistory(userId: number) {
+
+    if ( this.openedRowId === userId && this.openedType === 'history') {
+      this.openedRowId = null;
+      this.openedType = null;
+    } else {
+      this.openedRowId = userId;
+      this.openedType = 'history';
     }
   }
 
