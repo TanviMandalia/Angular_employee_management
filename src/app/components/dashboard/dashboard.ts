@@ -46,6 +46,9 @@ export class Dashboard implements OnInit {
   openedRowId: number | null = null;
   openedType: 'pending' | 'history' | null = null;
 
+  isUsersLoading = false;
+  isRequestsLoading = false;
+
   currentPage = 1;
   itemsPerPage = 8;
 
@@ -84,31 +87,42 @@ export class Dashboard implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadUsers();
-    this.loadRequests();
+    // this.loadUsers();
+    // this.loadRequests();
+
+    this.loadUsersSequentially();
   }
 
-  loadUsers() {
+  loadUsersSequentially() {
+    this.isUsersLoading = true;
     this.userService.getUsers().subscribe({
       next: (response: any) => {
         this.users.set(
-          response.reverse().map((u: any) => ({
+          response.map((u: any) => ({
             ...u, // spread oprator is used for take all value from value/object & copy them here
-            role: typeof u.role === 'object' ? u.role.name : u.role //check is role an object
+            role: typeof u.role === 'object' //check is role an object
+              ? u.role.name
+              : u.role
           }))
         );
+        this.isUsersLoading = false;
+        this.loadRequests();
       }
     });
   }
 
   loadRequests() {
+
+    this.isRequestsLoading = true;
+
     this.requestService.getAllRequests().subscribe({
+
       next: (response: any) => {
+
         this.requests.set(response);
-      },
-      error: (err) => {
-        console.log("Unable to load API", err);
-      },
+
+        this.isRequestsLoading = false;
+      }
     });
   }
 
@@ -142,10 +156,6 @@ export class Dashboard implements OnInit {
 
   selectAll() {
     this.selectedReportees = this.users().map(u => u.user_name);
-  }
-
-  clearAll() {
-    this.selectedReportees = [];
   }
 
   toggleReportee(name: string) {
@@ -227,7 +237,7 @@ export class Dashboard implements OnInit {
     this.userService.addUser(newUserObject).subscribe({
       next: () => {
         alert('User Added');
-        this.loadUsers();
+        this.loadUsersSequentially();
         this.closeAddModal();
       }, error: (err) => {
         console.log("Unable to fetch user from API.", err);
@@ -308,7 +318,7 @@ export class Dashboard implements OnInit {
       next: () => {
         this.requestService.updateRequest(request.id || 0, request).subscribe({
           next: () => {
-            this.loadUsers();
+            this.loadUsersSequentially();
             this.loadRequests();
             alert('Request Accepted');
           }
@@ -335,7 +345,7 @@ export class Dashboard implements OnInit {
     this.userService.deleteUser(userId).subscribe({
       next: () => {
         alert('User deleted');
-        this.loadUsers();
+        this.loadUsersSequentially();
       }
     });
   }

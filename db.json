@@ -239,18 +239,14 @@
       "id": "KZ6mybbL6g8"
     },
     {
-      "user_name": "Monika Sisangiya",
+      "id": "FuKmXGV_wU4",
+      "user_name": "Monika Shisangiya",
       "email": "monika@gmail.com",
-      "role": "Automation",
+      "role": "Developer",
       "reportee": [
-        {
-          "name": "Jay Bhatti"
-        },
-        {
-          "name": "Jatin Vora"
-        }
-      ],
-      "id": "FuKmXGV_wU4"
+        "Jay Bhatti",
+        "Jatin Vora"
+      ]
     }
   ],
   "roles": [
@@ -3068,6 +3064,37 @@
       "status": "PENDING",
       "actionTaken": false,
       "id": "1uet0hIYAjQ"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "FuKmXGV_wU4",
+      "oldData": {
+        "user_name": "Monika Sisangiya",
+        "email": "monika@gmail.com",
+        "role": "Automation",
+        "reportee": [
+          {
+            "name": "Jay Bhatti"
+          },
+          {
+            "name": "Jatin Vora"
+          }
+        ],
+        "id": "FuKmXGV_wU4"
+      },
+      "newData": {
+        "id": "FuKmXGV_wU4",
+        "user_name": "Monika Shisangiya",
+        "email": "monika@gmail.com",
+        "role": "Developer",
+        "reportee": [
+          "Jay Bhatti",
+          "Jatin Vora"
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "4FipnQLV_dg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
