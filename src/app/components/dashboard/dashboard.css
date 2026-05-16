@@ -1,6 +1,5 @@
 .container {
     max-width: 1850px;
-    margin: 20px auto;
     padding: 22px;
     background: #f4f7fc;
     border-radius: 18px;
@@ -86,7 +85,7 @@ tbody td:first-child {
 }
 
 .role-badge {
-    background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+    background: linear-gradient(135deg, #065bc9, #bfdbfe);
     color: #1d4ed8;
     padding: 5px 12px;
     border-radius: 999px;
@@ -344,6 +343,34 @@ button:hover {
     padding: 10px;
     z-index: 1000;
     box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.pagination button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #dbeafe;
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination span {
+    font-weight: 600;
+    color: #334155;
 }
 
 @media (max-width: 992px) {

@@ -20,7 +20,7 @@
                 <th>Reportees</th>
             </tr>
 
-            @for (user of users(); track user.id) {
+            @for (user of getPaginationUsers(); track user.id) {
             <tr>
                 <td>
                     <button type="button" class="edit" (click)="editUser(user)">
@@ -257,3 +257,17 @@
     </div>
 </div>
 }
+
+<div class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">
+        ⏪
+    </button>
+    <span>
+        Page {{ currentPage }}
+        of
+        {{ getTotalPages() }}
+    </span>
+    <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()">
+       ⏩
+    </button>
+</div>

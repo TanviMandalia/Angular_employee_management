@@ -46,6 +46,9 @@ export class Dashboard implements OnInit {
   openedRowId: number | null = null;
   openedType: 'pending' | 'history' | null = null;
 
+  currentPage = 1;
+  itemsPerPage = 8;
+
   selectedUser: UserData = {
     user_name: '',
     email: '',
@@ -68,9 +71,9 @@ export class Dashboard implements OnInit {
     { id: 5, name: 'HR' },
     { id: 6, name: 'Software Enginner' },
     { id: 7, name: "CEO" },
-    {id: 8, name:"CTO"},
-    {id: 9, name:"Business Analyst"},
-    {id: 10, name:"DevOps Engineer"}
+    { id: 8, name: "CTO" },
+    { id: 9, name: "Business Analyst" },
+    { id: 10, name: "DevOps Engineer" }
   ];
 
   constructor(
@@ -81,7 +84,7 @@ export class Dashboard implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadUsers();  
+    this.loadUsers();
     this.loadRequests();
   }
 
@@ -89,7 +92,7 @@ export class Dashboard implements OnInit {
     this.userService.getUsers().subscribe({
       next: (response: any) => {
         this.users.set(
-          response.map((u: any) => ({
+          response.reverse().map((u: any) => ({
             ...u, // spread oprator is used for take all value from value/object & copy them here
             role: typeof u.role === 'object' ? u.role.name : u.role //check is role an object
           }))
@@ -167,7 +170,7 @@ export class Dashboard implements OnInit {
 
   openHistory(userId: number) {
 
-    if ( this.openedRowId === userId && this.openedType === 'history') {
+    if (this.openedRowId === userId && this.openedType === 'history') {
       this.openedRowId = null;
       this.openedType = null;
     } else {
@@ -335,6 +338,32 @@ export class Dashboard implements OnInit {
         this.loadUsers();
       }
     });
+  }
+
+  getPaginationUsers() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+
+    const end = start + this.itemsPerPage;
+
+    return this.users().slice(start, end);
+  }
+
+  getTotalPages() {
+    return Math.ceil(this.users().length / this.itemsPerPage);
+  }
+
+  nextPage() {
+
+    if (this.currentPage < this.getTotalPages()) {
+      this.currentPage++;
+    }
+
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 
   onLogout() {
