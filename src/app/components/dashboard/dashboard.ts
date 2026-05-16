@@ -98,7 +98,7 @@ export class Dashboard implements OnInit {
     this.userService.getUsers().subscribe({
       next: (response: any) => {
         this.users.set(
-          response.map((u: any) => ({
+          response.reverse().map((u: any) => ({
             ...u, // spread oprator is used for take all value from value/object & copy them here
             role: typeof u.role === 'object' //check is role an object
               ? u.role.name
