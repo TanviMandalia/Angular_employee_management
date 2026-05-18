@@ -228,25 +228,18 @@
       "id": "W0QCKROFvPM"
     },
     {
-      "user_name": "Rohit Sharma",
-      "email": "rohit@gmail.com",
+      "user_name": "Riya Sharma",
+      "email": "riya@gmail.com",
       "role": "Tester",
       "reportee": [
         {
-          "name": "Bhavika Chhatbar"
+          "name": "Isha Chauhan"
+        },
+        {
+          "name": "Jay Bhatti"
         }
       ],
-      "id": "KZ6mybbL6g8"
-    },
-    {
-      "id": "FuKmXGV_wU4",
-      "user_name": "Monika Shisangiya",
-      "email": "monika@gmail.com",
-      "role": "Developer",
-      "reportee": [
-        "Jay Bhatti",
-        "Jatin Vora"
-      ]
+      "id": "FedVTpxBQqQ"
     }
   ],
   "roles": [
@@ -3067,7 +3060,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "FuKmXGV_wU4",
+      "userId": null,
       "oldData": {
         "user_name": "Monika Sisangiya",
         "email": "monika@gmail.com",
@@ -3098,7 +3091,7 @@
     },
     {
       "requestType": "EDIT",
-      "userId": "FuKmXGV_wU4",
+      "userId": null,
       "oldData": {
         "id": "FuKmXGV_wU4",
         "user_name": "Monika Shisangiya",

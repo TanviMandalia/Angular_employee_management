@@ -10,17 +10,7 @@
         </button>
     </div>
 
-    @if (isUsersLoading) {
-    <span class="loader">
-        <p>Loading Users...</p>
-    </span>
-    }
 
-    @if (isRequestsLoading) {
-    <span class="loader">
-        <p>Loading Requests...</p>
-    </span>
-    }
     <br><br>
     <table width="100%" cellpadding="10">
         <tbody>
@@ -32,7 +22,7 @@
                 <th>Reportees</th>
             </tr>
 
-            @for (user of getPaginationUsers(); track user.id) {
+            @for (user of paginatedUsers; track user.id) {
             <tr>
                 <td>
                     <button type="button" class="edit" (click)="editUser(user)">
@@ -187,6 +177,18 @@
     </table>
 </div>
 
+<!-- @if (isUsersLoading) {
+<span class="loader">
+    <p>Loading Users...</p>
+</span>
+}
+
+@if (isRequestsLoading) {
+<span class="loader">
+    <p>Loading Requests...</p>
+</span>
+} -->
+
 @if (showAddModal) {
 
 <div class="modal-bg" (click)="closeAddModal()">
@@ -270,21 +272,4 @@
 </div>
 }
 
-<div class="pagination-main">
-    <div class="pagination">
-        <button (click)="previousPage()" [disabled]="currentPage === 1">
-            ⏪
-        </button>
-        <span>
-            Page {{ currentPage }}
-            of
-            {{ getTotalPages() }}
-        </span>
-        <button (click)="nextPage()" [disabled]="currentPage === getTotalPages()">
-            ⏩
-        </button>
-    </div>
-    <div class="total">
-        <b>number of record exist: {{ users().length }}</b>
-    </div>
-</div>
+<app-pagination [users]="users()" (paginatedUsers)="paginatedUsers = $event"></app-pagination>

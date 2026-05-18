@@ -1,1 +1,37 @@
 <p>pagination works!</p>
+<div class="pagination-main">
+
+    <div class="pagination">
+
+        <button
+            (click)="previousPage()"
+            [disabled]="currentPage === 1">
+
+            ⏪
+
+        </button>
+
+        <span>
+            Page {{ currentPage }}
+            of
+            {{ getTotalPages() }}
+        </span>
+
+        <button
+            (click)="nextPage()"
+            [disabled]="currentPage === getTotalPages()">
+
+            ⏩
+
+        </button>
+
+    </div>
+
+    <div class="total">
+        <b>
+            Number of Records:
+            {{ users.length }}
+        </b>
+    </div>
+
+</div>

@@ -5,6 +5,7 @@ import { User } from '../../services/user';
 import { Request } from '../../services/request';
 import { Auth } from '../../services/auth';
 import { Router } from '@angular/router';
+import { Pagination } from '../pagination/pagination';
 
 interface Reportee {
   name: string;
@@ -31,7 +32,7 @@ interface RequestData {
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, Pagination],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
@@ -49,8 +50,7 @@ export class Dashboard implements OnInit {
   isUsersLoading = false;
   isRequestsLoading = false;
 
-  currentPage = 1;
-  itemsPerPage = 8;
+  paginatedUsers: UserData[] = [];
 
   selectedUser: UserData = {
     user_name: '',
@@ -348,32 +348,6 @@ export class Dashboard implements OnInit {
         this.loadUsersSequentially();
       }
     });
-  }
-
-  getPaginationUsers() {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-
-    const end = start + this.itemsPerPage;
-
-    return this.users().slice(start, end);
-  }
-
-  getTotalPages() {
-    return Math.ceil(this.users().length / this.itemsPerPage);
-  }
-
-  nextPage() {
-
-    if (this.currentPage < this.getTotalPages()) {
-      this.currentPage++;
-    }
-
-  }
-
-  previousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
   }
 
   onLogout() {
