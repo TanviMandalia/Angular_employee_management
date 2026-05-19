@@ -3186,6 +3186,37 @@
       "status": "PENDING",
       "actionTaken": false,
       "id": "jsP2OWKtIJw"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "o477uwvKWXI",
+      "oldData": {
+        "user_name": "Trusha Padhiyar",
+        "email": "trusha@gmail.com",
+        "role": "HR",
+        "reportee": [
+          {
+            "name": "Rutu Sharma"
+          },
+          {
+            "name": "Sweta Jani"
+          }
+        ],
+        "id": "o477uwvKWXI"
+      },
+      "newData": {
+        "id": "o477uwvKWXI",
+        "user_name": "Trusha Padhiyar",
+        "email": "trusha1511@gmail.com",
+        "role": "Tester",
+        "reportee": [
+          "Rutu Sharma",
+          "Sweta Jani"
+        ]
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "YyMXmHp4T_g"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

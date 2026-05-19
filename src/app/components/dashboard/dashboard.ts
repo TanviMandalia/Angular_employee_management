@@ -133,9 +133,9 @@ export class Dashboard implements OnInit {
       const reportee = reportees[i];
 
       if (typeof reportee === 'string') {
-        names += reportee;
+        names += reportee; //if string diretclt print.
       } else {
-        names += reportee.name;
+        names += reportee.name; //run when reporteeis obj.
       }
 
       if (i < reportees.length - 1) {
@@ -158,6 +158,7 @@ export class Dashboard implements OnInit {
     this.selectedReportees = this.users().map(u => u.user_name);
   }
 
+  // this function is main use to select user.
   toggleReportee(name: string) {
     const index = this.selectedReportees.indexOf(name);
 
@@ -258,7 +259,7 @@ export class Dashboard implements OnInit {
       reportee: []
     };
 
-    this.selectedReportees = []; //because of old selected user will remain visible when model reopens, so we reset it.
+    this.selectedReportees = []; //because of old selected user will remain visible when model reopens, so reset it.
   }
 
   closeModal() { //this is for edit
@@ -266,49 +267,45 @@ export class Dashboard implements OnInit {
   }
 
 
-
-  saveEditRequest() {
-    let originalUserSource: UserData | null = null;
-
-    const allUsers = this.users();
-
-    for (let i = 0; i < allUsers.length; i++) {
-      if (allUsers[i].id === this.selectedUser.id) {
-        originalUserSource = allUsers[i];
-        break;
-      }
+saveEditRequest() {
+  let originalUserSource: UserData | null = null;
+  const allUsers = this.users();
+  for (let i = 0; i < allUsers.length; i++) {
+    if (allUsers[i].id === this.selectedUser.id) {
+      originalUserSource = allUsers[i];
+      break;
     }
-
-    if (!originalUserSource) return;
-    const reporteeArray: string[] = [];
-
-    for (let i = 0; i < this.selectedReportees.length; i++) {
-      reporteeArray.push(this.selectedReportees[i]);
-    }
-
-    this.selectedUser.reportee = reporteeArray;
-    this.isSaving = true;
-
-    const requestObject: RequestData = {
-      requestType: 'EDIT',
-      userId: this.selectedUser.id || 0,
-      oldData: originalUserSource,
-      newData: this.selectedUser,
-      status: 'PENDING',
-      actionTaken: false
-    };
-
-    this.requestService.saveRequest(requestObject).subscribe({
-      next: () => {
-        alert('Request Saved');
-        this.showEditModal = false;
-        this.isSaving = false;
-        this.loadRequests();
-      }, error: (err) => {
-        console.log("Unable to fetch request from API.", err);
-      }
-    });
   }
+
+  const reporteeArray: string[] = [];
+  for (let i = 0; i < this.selectedReportees.length; i++) {
+    reporteeArray.push(this.selectedReportees[i]);
+  }
+
+  this.selectedUser.reportee = reporteeArray;
+  this.isSaving = true;
+  const requestObject: RequestData = {
+    requestType: 'EDIT',
+    userId: this.selectedUser.id || 0,
+    oldData: originalUserSource as UserData,
+    newData: this.selectedUser,
+    status: 'PENDING',
+    actionTaken: false
+  };
+
+  this.requestService.saveRequest(requestObject).subscribe({
+    next: () => {
+      alert('Request Saved');
+      this.showEditModal = false;
+      this.isSaving = false;
+      this.loadRequests();
+    },
+
+    error: (err) => {
+      console.log("Unable to fetch request from API.", err);
+    }
+  });
+}
 
   acceptRequest(request: RequestData) {
     request.actionTaken = true;
