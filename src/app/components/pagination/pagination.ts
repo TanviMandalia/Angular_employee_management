@@ -25,7 +25,7 @@ export class Pagination implements OnChanges {
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
 
-    setTimeout(() => {
+    setTimeout(() => { //if remove setTimeout then first record data is not show and also not show the delete text into button.
       this.paginatedUsers.emit(
         this.users.slice(start, end)
       );
