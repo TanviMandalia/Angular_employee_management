@@ -74,7 +74,6 @@ tbody tr {
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-    transition: 0.3s ease;
 }
 
 tbody tr:hover {
@@ -87,7 +86,6 @@ tbody td {
     font-size: 14px;
     color: #334155;
     border: none;
-    vertical-align: middle;
 }
 
 tbody td:first-child {
@@ -166,7 +164,6 @@ button:hover {
     margin-bottom: 14px;
     border: 1px solid #e2e8f0;
     box-shadow: 0 4px 10px rgba(15, 23, 42, 0.05);
-    transition: 0.3s ease;
 }
 
 .request-card:hover {
@@ -296,7 +293,6 @@ button:hover {
     padding: 9px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.2s ease;
 }
 
 .reportee-item:hover {
@@ -384,9 +380,9 @@ button:hover {
 }
 
 .loader {
-  width: 48px;
-  height: 48px;
-  border: 3px dotted #FFF;
+  width: 25px;
+  height: 25px;
+  border: 3px dotted #564e4e;
   border-style: solid solid dotted dotted;
   border-radius: 50%;
   display: inline-block;
@@ -405,8 +401,8 @@ button:hover {
   margin: auto;
   border: 3px dotted #FF3D00;
   border-style: solid solid dotted;
-  width: 24px;
-  height: 24px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   animation: rotationBack 1s linear infinite;
   transform-origin: center center;
@@ -471,7 +467,6 @@ button:hover {
     overflow-y: auto;
     padding: 12px;
     box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
-    animation: dropdownOpen 0.25s ease;
 }
 
 .dropdown-actions {
@@ -489,7 +484,6 @@ button:hover {
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s ease;
 }
 
 .dropdown-actions button:hover {
@@ -538,16 +532,16 @@ button:hover {
     }
 }
 
-.dropdown-body::-webkit-scrollbar {
+.dropdown-body {
     width: 7px;
 }
 
-.dropdown-body::-webkit-scrollbar-thumb {
+.dropdown-body {
     background: #cbd5e1;
     border-radius: 10px;
 }
 
-.dropdown-body::-webkit-scrollbar-thumb:hover {
+.dropdown-body:hover{
     background: #94a3b8;
 }
 

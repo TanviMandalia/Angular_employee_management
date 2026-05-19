@@ -177,17 +177,16 @@
     </table>
 </div>
 
-<!-- @if (isUsersLoading) {
-<span class="loader">
-    <p>Loading Users...</p>
-</span>
+@if (isUsersLoading) {
+<span class="loader"></span>
+    <p style="color: red;">Loading Users...</p>
 }
 
 @if (isRequestsLoading) {
-<span class="loader">
-    <p>Loading Requests...</p>
-</span>
-} -->
+<span class="loader"></span>
+    <p style="color: red;">Loading Requests...</p>
+
+}
 
 @if (showAddModal) {
 

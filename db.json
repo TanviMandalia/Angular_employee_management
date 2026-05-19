@@ -240,6 +240,16 @@
         }
       ],
       "id": "FedVTpxBQqQ"
+    },
+    {
+      "id": "eqhQgHLo9KA",
+      "user_name": "Rinki Pandit",
+      "email": "rinki@gmail.com",
+      "role": "HR",
+      "reportee": [
+        "Trusha Padhiyar",
+        "Rutu Sharma"
+      ]
     }
   ],
   "roles": [
@@ -3115,6 +3125,67 @@
       "status": "PENDING",
       "actionTaken": false,
       "id": "lTGYIHqRhsU"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "eqhQgHLo9KA",
+      "oldData": {
+        "user_name": "Rinki Pandit",
+        "email": "rinki@gmail.com",
+        "role": "HR",
+        "reportee": [
+          {
+            "name": "Sweta Jani"
+          },
+          {
+            "name": "Trusha Padhiyar"
+          },
+          {
+            "name": "Rutu Sharma"
+          }
+        ],
+        "id": "eqhQgHLo9KA"
+      },
+      "newData": {
+        "id": "eqhQgHLo9KA",
+        "user_name": "Rinki Pandit",
+        "email": "rinki@gmail.com",
+        "role": "HR",
+        "reportee": [
+          "Trusha Padhiyar",
+          "Rutu Sharma"
+        ]
+      },
+      "status": "ACCEPTED",
+      "actionTaken": true,
+      "id": "gfaho2cQQb8"
+    },
+    {
+      "requestType": "EDIT",
+      "userId": "eqhQgHLo9KA",
+      "oldData": {
+        "id": "eqhQgHLo9KA",
+        "user_name": "Rinki Pandit",
+        "email": "rinki@gmail.com",
+        "role": "HR",
+        "reportee": [
+          "Trusha Padhiyar",
+          "Rutu Sharma"
+        ]
+      },
+      "newData": {
+        "id": "eqhQgHLo9KA",
+        "user_name": "Rinki Pandit",
+        "email": "rinki1810@gmail.com",
+        "role": "HR",
+        "reportee": [
+          "Trusha Padhiyar",
+          "Rutu Sharma"
+        ]
+      },
+      "status": "PENDING",
+      "actionTaken": false,
+      "id": "jsP2OWKtIJw"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
